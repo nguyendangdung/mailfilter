@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{80A27DA2-E0E2-4F4D-8748-A67E705355FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{80A27DA2-E0E2-4F4D-8748-A67E705355FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80A27DA2-E0E2-4F4D-8748-A67E705355FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80A27DA2-E0E2-4F4D-8748-A67E705355FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
