@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileMailStore.cs" />
     <Compile Include="Repositories\DbMailRepository.cs" />
     <Compile Include="Repositories\FileMailRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
