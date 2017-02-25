@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Services;
 
 namespace GenerateFakeEmails
 {
@@ -15,20 +16,26 @@ namespace GenerateFakeEmails
         {
             var source = @"C:\Users\dannguyen\Desktop\test";
             var i = 0;
-            while (i < 1000)
+            using (var context = new MailContext())
             {
-                Thread.Sleep(1000);
-                i++;
-                var email = new EmailContent()
+                while (i < 1000)
                 {
-                    EmailContentID = Guid.NewGuid(),
-                    Status = EmailStatus.NotChecked,
-                    Content = "random content here"
-                };
+                    Thread.Sleep(1000);
+                    i++;
+                    var email = new EmailContent()
+                    {
+                        EmailContentID = Guid.NewGuid(),
+                        Status = EmailStatus.NotChecked,
+                        Content = "random content here"
+                    };
 
-                File.WriteAllText(Path.Combine(source, email.EmailContentID + ".txt"), email.Content);
-                Console.WriteLine(email.EmailContentID);
+                    File.WriteAllText(Path.Combine(source, email.EmailContentID + ".txt"), email.Content);
+                    context.EmailContents.Add(email);
+                    context.SaveChanges();
+                    Console.WriteLine(email.EmailContentID);
+                }
             }
+            
 
 
             Console.WriteLine("Done");
