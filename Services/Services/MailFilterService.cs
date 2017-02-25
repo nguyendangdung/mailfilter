@@ -30,7 +30,10 @@ namespace Services.Services
             _timer = new Timer(2 * 1000);
             _timer.Elapsed += _timer_Elapsed;
 
-            EnqueueProgress = new Progress<EmailContent>();
+            EnqueueProgress = new Progress<EmailContent>(s =>
+            {
+                EmailContentQueue.Add(s);
+            });
             DequeueProgress = new Progress<EmailContent>();
         }
 

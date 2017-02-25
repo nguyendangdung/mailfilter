@@ -19,7 +19,7 @@ namespace Services.Repositories
 
         public async Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync()
         {
-            return new List<EmailContent>();
+            //return new List<EmailContent>();
             return
                 await _context.EmailContents.AsNoTracking().Where(s => s.Status == EmailStatus.NotChecked).ToListAsync();
         }
