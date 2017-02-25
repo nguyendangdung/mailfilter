@@ -16,18 +16,21 @@ namespace App
     public partial class Main : Form
     {
         private readonly List<IMailFilterService> _mailFilterServices;
-        // private readonly IProgress<string> _fileMailsProcess = new Progress<string>(s => { });
-        private IProgress<string> _dbMailsProcess = new Progress<string>(s => { });
+        
         public Main()
         {
             
             InitializeComponent();
-            var fileEmailService = new FileMailFilterService(new FileMailRepository(srcTxt.Text, desTxt.Text));
+            var fileEmailService = new MailFilterService(new FileMailRepository(srcTxt.Text, desTxt.Text));
+            var dbEmailService = new MailFilterService(new DbMailRepository());
+
             _mailFilterServices = new List<IMailFilterService>()
             {
-                fileEmailService
+                fileEmailService, dbEmailService
             };
+
             fileEmailContentBindingSource.DataSource = fileEmailService.EmailContentQueue;
+            dbEmailContentBindingSource.DataSource = dbEmailService.EmailContentQueue;
         }
 
         private async void startBtn_Click(object sender, EventArgs e)

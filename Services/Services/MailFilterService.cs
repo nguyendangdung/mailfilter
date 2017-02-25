@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Domain.Entities;
@@ -12,29 +14,24 @@ using Domain.Services;
 
 namespace Services.Services
 {
-    public class FileMailFilterService : MailFilterService
+    public class MailFilterService : IMailFilterService
     {
         private readonly ConcurrentQueue<EmailContent> _emailContentQueue;
         private readonly Timer _timer;
         private readonly IMailRepository _mailRepository;
-        
-        //public BindingList<EmailContent> EmailContentQueue { get; set; }
-        //public IProgress<EmailContent> EnqueueProgress { get; set; }
-        //public IProgress<EmailContent> DequeueProgress { get; set; }
-        //public Collection<IFilter> Filters { get; set; }
 
-        public FileMailFilterService(IMailRepository mailRepository)
+        public MailFilterService(IMailRepository mailRepository)
         {
-            Filters = new Collection<IFilter>();
-            _mailRepository = mailRepository;
             _emailContentQueue = new ConcurrentQueue<EmailContent>();
-            _timer = new Timer(2*1000);
-            _timer.Elapsed += _timer_Elapsed;
+            _mailRepository = mailRepository;
             EmailContentQueue = new BindingList<EmailContent>();
-            EnqueueProgress = new Progress<EmailContent>(s =>
-            {
-                EmailContentQueue.Add(s);
-            });
+            Filters = new Collection<IFilter>();
+
+            _timer = new Timer(2 * 1000);
+            _timer.Elapsed += _timer_Elapsed;
+
+            EnqueueProgress = new Progress<EmailContent>();
+            DequeueProgress = new Progress<EmailContent>();
         }
 
         private async void _timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -42,7 +39,28 @@ namespace Services.Services
             await Task.Run(DoFilterAsync);
         }
 
-        
+        public IProgress<EmailContent> EnqueueProgress { get; set; }
+        public IProgress<EmailContent> DequeueProgress { get; set; }
+        public BindingList<EmailContent> EmailContentQueue { get; set; }
+        public Collection<IFilter> Filters { get; set; }
+
+
+        public void AddFilter(IFilter filter)
+        {
+            if (filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+            Filters.Add(filter);
+        }
+        public void RemoveFilter(IFilter filter)
+        {
+            if (filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+            Filters.Remove(filter);
+        }
 
         public async Task StartFilterAsync()
         {
@@ -50,7 +68,7 @@ namespace Services.Services
             _timer.Enabled = true;
             _timer.Start();
         }
-        
+
 
         private async Task DoFilterAsync()
         {

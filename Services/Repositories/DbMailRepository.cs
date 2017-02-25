@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.IRepository;
@@ -8,9 +10,18 @@ namespace Services.Repositories
 {
     public class DbMailRepository : IMailRepository
     {
-        public Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync()
+        private readonly MailContext _context;
+
+        public DbMailRepository()
         {
-            throw new NotImplementedException();
+            _context = new MailContext();
+        }
+
+        public async Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync()
+        {
+            return new List<EmailContent>();
+            return
+                await _context.EmailContents.AsNoTracking().Where(s => s.Status == EmailStatus.NotChecked).ToListAsync();
         }
 
         public Task UpdateCheckEmailAsync(EmailContent email)

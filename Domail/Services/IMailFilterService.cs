@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Domain.Services
     {
         IProgress<EmailContent> EnqueueProgress { get; set; }
         IProgress<EmailContent> DequeueProgress { get; set; }
+        BindingList<EmailContent> EmailContentQueue { get; set; }
 
         Collection<IFilter> Filters { get; set; }
 
