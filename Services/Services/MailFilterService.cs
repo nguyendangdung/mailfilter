@@ -37,10 +37,7 @@ namespace Services.Services
             DequeueProgress = new Progress<EmailContent>();
         }
 
-        private async void _timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            await Task.Run(DoFilterAsync);
-        }
+        public Action<EmailContent> OnEmailChecked;
 
         public IProgress<EmailContent> EnqueueProgress { get; set; }
         public IProgress<EmailContent> DequeueProgress { get; set; }
@@ -86,6 +83,10 @@ namespace Services.Services
                     EnqueueProgress.Report(s);
                 }
             });
+        }
+        private async void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            await Task.Run(DoFilterAsync);
         }
     }
 }

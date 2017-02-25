@@ -35,8 +35,18 @@
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.emailContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isCheckingDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dbEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.emailContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isCheckingDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.fileEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.historyPage = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -63,29 +73,25 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.emailContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isCheckingDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dbEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.emailContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isCheckingDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.fileEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.checkedEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.emailContentIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isCheckingDataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.workingPage.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).BeginInit();
             this.historyPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -125,10 +131,23 @@
             // 
             // dataGridView4
             // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AllowUserToOrderColumns = true;
+            this.dataGridView4.AllowUserToResizeRows = false;
+            this.dataGridView4.AutoGenerateColumns = false;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.emailContentIDDataGridViewTextBoxColumn2,
+            this.contentDataGridViewTextBoxColumn2,
+            this.statusDataGridViewTextBoxColumn2,
+            this.isCheckingDataGridViewCheckBoxColumn2});
+            this.dataGridView4.DataSource = this.checkedEmailContentBindingSource;
             this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView4.Location = new System.Drawing.Point(3, 16);
             this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.Size = new System.Drawing.Size(352, 403);
             this.dataGridView4.TabIndex = 0;
             // 
@@ -166,6 +185,38 @@
             this.dataGridView3.Size = new System.Drawing.Size(380, 403);
             this.dataGridView3.TabIndex = 0;
             // 
+            // emailContentIDDataGridViewTextBoxColumn1
+            // 
+            this.emailContentIDDataGridViewTextBoxColumn1.DataPropertyName = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn1.HeaderText = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn1.Name = "emailContentIDDataGridViewTextBoxColumn1";
+            this.emailContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn1
+            // 
+            this.contentDataGridViewTextBoxColumn1.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn1.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn1.Name = "contentDataGridViewTextBoxColumn1";
+            this.contentDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // isCheckingDataGridViewCheckBoxColumn1
+            // 
+            this.isCheckingDataGridViewCheckBoxColumn1.DataPropertyName = "IsChecking";
+            this.isCheckingDataGridViewCheckBoxColumn1.HeaderText = "IsChecking";
+            this.isCheckingDataGridViewCheckBoxColumn1.Name = "isCheckingDataGridViewCheckBoxColumn1";
+            this.isCheckingDataGridViewCheckBoxColumn1.ReadOnly = true;
+            // 
+            // dbEmailContentBindingSource
+            // 
+            this.dbEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView2);
@@ -199,6 +250,38 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(367, 403);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // emailContentIDDataGridViewTextBoxColumn
+            // 
+            this.emailContentIDDataGridViewTextBoxColumn.DataPropertyName = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn.HeaderText = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn.Name = "emailContentIDDataGridViewTextBoxColumn";
+            this.emailContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn
+            // 
+            this.contentDataGridViewTextBoxColumn.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
+            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isCheckingDataGridViewCheckBoxColumn
+            // 
+            this.isCheckingDataGridViewCheckBoxColumn.DataPropertyName = "IsChecking";
+            this.isCheckingDataGridViewCheckBoxColumn.HeaderText = "IsChecking";
+            this.isCheckingDataGridViewCheckBoxColumn.Name = "isCheckingDataGridViewCheckBoxColumn";
+            this.isCheckingDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // fileEmailContentBindingSource
+            // 
+            this.fileEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
             // 
             // historyPage
             // 
@@ -444,69 +527,33 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Source Directory";
             // 
-            // emailContentIDDataGridViewTextBoxColumn1
+            // checkedEmailContentBindingSource
             // 
-            this.emailContentIDDataGridViewTextBoxColumn1.DataPropertyName = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn1.HeaderText = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn1.Name = "emailContentIDDataGridViewTextBoxColumn1";
-            this.emailContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.checkedEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
             // 
-            // contentDataGridViewTextBoxColumn1
+            // emailContentIDDataGridViewTextBoxColumn2
             // 
-            this.contentDataGridViewTextBoxColumn1.DataPropertyName = "Content";
-            this.contentDataGridViewTextBoxColumn1.HeaderText = "Content";
-            this.contentDataGridViewTextBoxColumn1.Name = "contentDataGridViewTextBoxColumn1";
-            this.contentDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.emailContentIDDataGridViewTextBoxColumn2.DataPropertyName = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn2.HeaderText = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn2.Name = "emailContentIDDataGridViewTextBoxColumn2";
             // 
-            // statusDataGridViewTextBoxColumn1
+            // contentDataGridViewTextBoxColumn2
             // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.contentDataGridViewTextBoxColumn2.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn2.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn2.Name = "contentDataGridViewTextBoxColumn2";
             // 
-            // isCheckingDataGridViewCheckBoxColumn1
+            // statusDataGridViewTextBoxColumn2
             // 
-            this.isCheckingDataGridViewCheckBoxColumn1.DataPropertyName = "IsChecking";
-            this.isCheckingDataGridViewCheckBoxColumn1.HeaderText = "IsChecking";
-            this.isCheckingDataGridViewCheckBoxColumn1.Name = "isCheckingDataGridViewCheckBoxColumn1";
-            this.isCheckingDataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn2.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn2.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn2.Name = "statusDataGridViewTextBoxColumn2";
             // 
-            // dbEmailContentBindingSource
+            // isCheckingDataGridViewCheckBoxColumn2
             // 
-            this.dbEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
-            // 
-            // emailContentIDDataGridViewTextBoxColumn
-            // 
-            this.emailContentIDDataGridViewTextBoxColumn.DataPropertyName = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn.HeaderText = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn.Name = "emailContentIDDataGridViewTextBoxColumn";
-            this.emailContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // contentDataGridViewTextBoxColumn
-            // 
-            this.contentDataGridViewTextBoxColumn.DataPropertyName = "Content";
-            this.contentDataGridViewTextBoxColumn.HeaderText = "Content";
-            this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
-            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isCheckingDataGridViewCheckBoxColumn
-            // 
-            this.isCheckingDataGridViewCheckBoxColumn.DataPropertyName = "IsChecking";
-            this.isCheckingDataGridViewCheckBoxColumn.HeaderText = "IsChecking";
-            this.isCheckingDataGridViewCheckBoxColumn.Name = "isCheckingDataGridViewCheckBoxColumn";
-            this.isCheckingDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // fileEmailContentBindingSource
-            // 
-            this.fileEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            this.isCheckingDataGridViewCheckBoxColumn2.DataPropertyName = "IsChecking";
+            this.isCheckingDataGridViewCheckBoxColumn2.HeaderText = "IsChecking";
+            this.isCheckingDataGridViewCheckBoxColumn2.Name = "isCheckingDataGridViewCheckBoxColumn2";
             // 
             // Main
             // 
@@ -526,15 +573,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).EndInit();
             this.historyPage.ResumeLayout(false);
             this.historyPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -585,6 +633,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isCheckingDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource dbEmailContentBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isCheckingDataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.BindingSource checkedEmailContentBindingSource;
     }
 }
 
