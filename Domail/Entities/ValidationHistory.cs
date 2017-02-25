@@ -13,7 +13,7 @@ namespace Domain.Entities
         public EmailStatus Status { get; set; }
         public string Description { get; set; }
         public string FileName { get; set; }
-        public Guid EmailContentId { get; set; }
+        public Guid? EmailContentId { get; set; }
         public DateTime ValidationDTG { get; set; }
     }
 }

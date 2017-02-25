@@ -9,7 +9,7 @@ namespace Domain.Filters
 {
     public interface IFilter
     {
-        Task<bool> CheckMailAsync(EmailContent email);
-        bool CheckMail(EmailContent email);
+        Task<FilterResult> CheckMailAsync(EmailContent email);
+        FilterResult CheckMail(EmailContent email);
     }
 }

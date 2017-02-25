@@ -19,9 +19,17 @@ namespace Services.Repositories
 
         public async Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync()
         {
-            //return new List<EmailContent>();
             return
-                await _context.EmailContents.AsNoTracking().Where(s => s.Status == EmailStatus.NotChecked).ToListAsync();
+                await
+                    _context.EmailContents.AsNoTracking()
+                        .Where(s => s.Status == EmailStatus.NotChecked)
+                        .Select(s => new EmailContent()
+                        {
+                            Status = s.Status,
+                            EmailContentID = s.EmailContentID,
+                            Content = s.Content,
+                            MailSource = MailSource.Db
+                        }).ToListAsync();
         }
 
         public Task UpdateCheckEmailAsync(EmailContent email)

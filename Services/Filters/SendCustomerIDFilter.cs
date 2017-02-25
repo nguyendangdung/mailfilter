@@ -11,12 +11,12 @@ namespace Services.Filters
     /// </summary>
     public class SendCustomerIDFilter : IFilter
     {
-        public Task<bool> CheckMailAsync(EmailContent email)
+        public Task<FilterResult> CheckMailAsync(EmailContent email)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool CheckMail(EmailContent email)
+        public FilterResult CheckMail(EmailContent email)
         {
             var words = email.Content.Split(new char[0]).Cast<string>();
 
@@ -24,12 +24,13 @@ namespace Services.Filters
                 words.Where(s => s.Length == 9 && s.ToLower().StartsWith("kh_") && s.Substring(3, 6).All(char.IsDigit));
             if (illegalWords.Any())
             {
-                email.Status = EmailStatus.Violated;
-                return false;
+                return new FilterResult()
+                {
+                    Status = EmailStatus.Violated,
+                    Message = "Gửi mã khách hàng"
+                };
             }
-            email.Status = EmailStatus.NotViolated;
-            return true;
-            // throw new System.NotImplementedException();
+            return new FilterResult() {Status = EmailStatus.NotViolated};
         }
     }
 }

@@ -45,7 +45,8 @@ namespace Services.Repositories
                 {
                     Content = FileHelper.ReadContent(file),
                     Status = EmailStatus.NotChecked,
-                    EmailContentID = Guid.Parse(Path.GetFileNameWithoutExtension(file))
+                    EmailContentID = Guid.Parse(Path.GetFileNameWithoutExtension(file)),
+                    MailSource = MailSource.FileSystem
                 });
 
             }

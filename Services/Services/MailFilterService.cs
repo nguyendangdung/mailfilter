@@ -19,11 +19,13 @@ namespace Services.Services
         private readonly ConcurrentQueue<EmailContent> _emailContentQueue;
         private readonly Timer _timer;
         private readonly IMailRepository _mailRepository;
+        private readonly IValidationHistoryRepository _validationHistoryRepository;
 
-        public MailFilterService(IMailRepository mailRepository)
+        public MailFilterService(IMailRepository mailRepository, IValidationHistoryRepository validationHistoryRepository)
         {
             _emailContentQueue = new ConcurrentQueue<EmailContent>();
             _mailRepository = mailRepository;
+            _validationHistoryRepository = validationHistoryRepository;
             EmailContentQueue = new BindingList<EmailContent>();
             Filters = new Collection<IFilter>();
 
@@ -34,7 +36,11 @@ namespace Services.Services
             {
                 EmailContentQueue.Add(s);
             });
-            DequeueProgress = new Progress<EmailContent>();
+            DequeueProgress = new Progress<EmailContent>(s =>
+            {
+                EmailContentQueue.Remove(s);
+                OnEmailChecked?.Invoke(s);
+            });
         }
 
         public Action<EmailContent> OnEmailChecked;
@@ -83,7 +89,64 @@ namespace Services.Services
                     EnqueueProgress.Report(s);
                 }
             });
+
+            // Try dequeue a email from the queue
+            while (!_emailContentQueue.IsEmpty)
+            {
+                EmailContent email;
+                var result = _emailContentQueue.TryDequeue(out email);
+                if (result && email != null)
+                {
+                    // Get FilterResults from filters
+                    var filterResults = Filters.Select(s => s.CheckMail(email)).ToList();
+                    if (filterResults.Any(s => s.Status == EmailStatus.Violated))
+                    {
+                        email.Status = EmailStatus.Violated;
+                        
+                    }
+
+                    // Save processed EmailContent
+                    await _mailRepository.UpdateCheckEmailAsync(email);
+
+                    // Generate ValidationHistory Object
+                    var validationHistory = GetValidationHistory(email, filterResults);
+                    // Save to the storage
+                    await _validationHistoryRepository.AddAsync(validationHistory);
+                    DequeueProgress.Report(email);
+                }
+            }
         }
+
+        private ValidationHistory GetValidationHistory(EmailContent email, List<FilterResult> filterResults)
+        {
+            if (filterResults == null)
+            {
+                throw new ArgumentNullException("filterResults");
+            }
+            var message = string.Empty;
+            filterResults.Where(s => s.Status == EmailStatus.Violated).ToList().ForEach(s =>
+            {
+                message += s.Message + ", ";
+            });
+
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                message = message.Trim();
+                message = message.Substring(0, message.Length - 1);
+            }
+
+            return new ValidationHistory()
+            {
+                Status = email.Status,
+                Content = email.Content,
+                EmailContentId = email.MailSource == MailSource.Db ? email.EmailContentID : (Guid?)null,
+                ValidationDTG = DateTime.Now,
+                ValidationHistoryID = Guid.NewGuid(),
+                Description = message,
+                FileName = email.MailSource == MailSource.FileSystem ? "" : null
+            };
+        }
+
         private async void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             await Task.Run(DoFilterAsync);

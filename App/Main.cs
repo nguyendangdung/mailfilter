@@ -21,14 +21,14 @@ namespace App
             InitializeComponent();
             _checkedEmails = new BindingList<EmailContent>();
 
-            var fileEmailService = new MailFilterService(new FileMailRepository(srcTxt.Text, desTxt.Text))
+            var fileEmailService = new MailFilterService(new FileMailRepository(srcTxt.Text, desTxt.Text), new ValidationHistoryRepository())
             {
                 OnEmailChecked = e =>
                 {
                     _checkedEmails.Add(e);
                 }
             };
-            var dbEmailService = new MailFilterService(new DbMailRepository())
+            var dbEmailService = new MailFilterService(new DbMailRepository(), new ValidationHistoryRepository())
             {
                 OnEmailChecked = e =>
                 {
