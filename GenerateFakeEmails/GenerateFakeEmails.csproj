@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5DA537D1-DE66-4128-92B1-6A5148462EDF}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{6562389D-C711-4781-85AB-D5B29A1E70AD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Services</RootNamespace>
-    <AssemblyName>Services</AssemblyName>
+    <RootNamespace>GenerateFakeEmails</RootNamespace>
+    <AssemblyName>GenerateFakeEmails</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,21 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileMailStore.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Repositories\DbMailRepository.cs" />
-    <Compile Include="Repositories\FileMailRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\FileMailFilterService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domail\Domain.csproj">
       <Project>{d403b5c6-ab7c-40aa-809f-bd0068facf78}</Project>
       <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
-      <Project>{80a27da2-e0e2-4f4d-8748-a67e705355fd}</Project>
-      <Name>Helpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

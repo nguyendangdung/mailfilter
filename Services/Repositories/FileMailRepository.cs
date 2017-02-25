@@ -12,17 +12,17 @@ namespace Services.Repositories
     public class FileMailRepository : IMailRepository
     {
         public string SourceDirectory { get; }
-        public string DestinationDirectory { get; private set; }
+        public string DestinationDirectory { get; }
 
 
-        public FileMailRepository()
+        public FileMailRepository(string src, string des)
         {
             // Init working directory here
             // Load the values from Application configuration file
-            SourceDirectory = "";
-            DestinationDirectory = "";
+            SourceDirectory = src;
+            DestinationDirectory = des;
         }
-        public async Task<IEnumerable<EmailContent>> GetAllAsyc()
+        public async Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync()
         {
             if (!Directory.Exists(SourceDirectory))
             {
@@ -51,6 +51,11 @@ namespace Services.Repositories
             }
 
             return emails;
+        }
+
+        public Task UpdateCheckEmailAsync(EmailContent email)
+        {
+            throw new NotImplementedException();
         }
 
         private IEnumerable<string> GetAllMailFiles()

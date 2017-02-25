@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFakeEmails", "GenerateFakeEmails\GenerateFakeEmails.csproj", "{6562389D-C711-4781-85AB-D5B29A1E70AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E794E4F-9D3C-4A3F-99FE-6C7F4C2984BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6562389D-C711-4781-85AB-D5B29A1E70AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6562389D-C711-4781-85AB-D5B29A1E70AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6562389D-C711-4781-85AB-D5B29A1E70AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6562389D-C711-4781-85AB-D5B29A1E70AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

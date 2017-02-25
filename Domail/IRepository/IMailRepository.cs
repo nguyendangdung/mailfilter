@@ -7,8 +7,13 @@ using Domain.Entities;
 
 namespace Domain.IRepository
 {
+    /// <summary>
+    /// Handle EmailContent actions
+    /// </summary>
     public interface IMailRepository
     {
-        Task<IEnumerable<EmailContent>> GetAllAsyc();
+        Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync();
+        Task UpdateCheckEmailAsync(EmailContent email);
+        // Task Save
     }
 }

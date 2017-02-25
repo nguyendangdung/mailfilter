@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Services;
+using Services.Repositories;
 using Services.Services;
 
 namespace App
@@ -15,10 +16,10 @@ namespace App
 
         public Controller()
         {
-            MailFilterServices = new List<IMailFilterService>()
-            {
-                new FileMailFilterService()
-            };
+            //MailFilterServices = new List<IMailFilterService>()
+            //{
+            //    new FileMailFilterService(new FileMailRepository(txt))
+            //};
         }
 
         public IEnumerable<ValidationHistory> GetValidationHistories(int page, int size)
