@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileMailStore.cs" />
+    <Compile Include="Filters\SendCustomerIDFilter.cs" />
+    <Compile Include="Filters\SensitiveInfoFilter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repositories\DbMailRepository.cs" />
     <Compile Include="Repositories\FileMailRepository.cs" />

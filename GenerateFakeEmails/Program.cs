@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
 
@@ -16,6 +17,7 @@ namespace GenerateFakeEmails
             var i = 0;
             while (i < 1000)
             {
+                Thread.Sleep(1000);
                 i++;
                 var email = new EmailContent()
                 {
