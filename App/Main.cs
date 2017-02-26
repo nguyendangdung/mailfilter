@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.Entities;
 using Domain.Services;
+using Services;
 using Services.Repositories;
 using Services.Services;
 
@@ -48,8 +49,13 @@ namespace App
 
         private async void startBtn_Click(object sender, EventArgs e)
         {
-            var tasks = _mailFilterServices.Select(s => s.StartFilterAsync());
-            await Task.WhenAll(tasks);
+            var monitorTasks = _mailFilterServices.Select(s => s.MonitorAsync());
+            await Task.WhenAll(monitorTasks);
+
+            var task1 = _mailFilterServices[0].StartFilterAsync();
+            var task2 = _mailFilterServices[1].StartFilterAsync();
+
+            await Task.WhenAll(task1, task2);
         }
     }
 }

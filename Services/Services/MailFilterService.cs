@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Domain.Entities;
@@ -29,7 +28,7 @@ namespace Services.Services
             EmailContentQueue = new BindingList<EmailContent>();
             Filters = new Collection<IFilter>();
 
-            _timer = new Timer(2 * 1000);
+            _timer = new Timer(1000);
             _timer.Elapsed += _timer_Elapsed;
 
             EnqueueProgress = new Progress<EmailContent>(s =>
@@ -70,49 +69,85 @@ namespace Services.Services
 
         public async Task StartFilterAsync()
         {
-            await Task.Run(DoFilterAsync);
-            _timer.Enabled = true;
-            _timer.Start();
+            await DoFilterAsync();
+        }
+
+        public async Task MonitorAsync()
+        {
+            await Task.Run(DoMonitorAsync);
+        }
+
+        /// <summary>
+        /// This is excuted in separate thread
+        /// </summary>
+        /// <returns></returns>
+        private async Task DoMonitorAsync()
+        {
+            // Still there are too many emails in the queue => Ignore
+            if (_emailContentQueue.Count < 1000)
+            {
+                _timer.Stop();
+                var emails = await _mailRepository.GetNotCheckedEmailsAsync();
+                emails.ToList().ForEach(s =>
+                {
+                    if (_emailContentQueue.All(t => t.EmailContentID != s.EmailContentID))
+                    {
+                        _emailContentQueue.Enqueue(s);
+                        EnqueueProgress.Report(s);
+                    }
+                });
+                _timer.Start();
+            }
         }
 
 
         private async Task DoFilterAsync()
         {
-            var emails = await _mailRepository.GetNotCheckedEmailsAsync();
-
-            // Check to ignore the emails that are being in queue
-            emails.ToList().ForEach(s =>
+            var temp = new List<EmailContent>();
+            var validationHistories = new List<ValidationHistory>();
+            while (true)
             {
-                if (_emailContentQueue.All(t => t.EmailContentID != s.EmailContentID))
+                if (!_emailContentQueue.IsEmpty)
                 {
-                    _emailContentQueue.Enqueue(s);
-                    EnqueueProgress.Report(s);
-                }
-            });
-
-            // Try dequeue a email from the queue
-            while (!_emailContentQueue.IsEmpty)
-            {
-                EmailContent email;
-                var result = _emailContentQueue.TryDequeue(out email);
-                if (result && email != null)
-                {
-                    // Get FilterResults from filters
-                    var filterResults = Filters.Select(s => s.CheckMail(email)).ToList();
-                    if (filterResults.Any(s => s.Status == EmailStatus.Violated))
+                    EmailContent email;
+                    var result = _emailContentQueue.TryDequeue(out email);
+                    if (result && email != null)
                     {
-                        email.Status = EmailStatus.Violated;
+                        // Get FilterResults from filters
+                        var filterResults = Filters.Select(s => s.CheckMail(email)).ToList();
+                        email.Status = filterResults.Any(s => s.Status == EmailStatus.Violated)
+                            ? EmailStatus.Violated
+                            : EmailStatus.NotViolated;
+
+                        temp.Add(email);
+
+                        // Generate ValidationHistory Object
+                        var validationHistory = GetValidationHistory(email, filterResults);
+                        validationHistories.Add(validationHistory);
                         
+                        DequeueProgress.Report(email);
+
+                        if (temp.Count >= 100)
+                        {
+                            await _mailRepository.UpdateCheckEmailsAsync(temp);
+                            await _validationHistoryRepository.AddRangeAsync(validationHistories);
+
+                            temp.Clear();
+                            validationHistories.Clear();
+                        }
                     }
+                }
+                else
+                {
+                    if (temp.Any())
+                    {
+                        await _mailRepository.UpdateCheckEmailsAsync(temp);
+                        await _validationHistoryRepository.AddRangeAsync(validationHistories);
 
-                    // Save processed EmailContent
-                    await _mailRepository.UpdateCheckEmailAsync(email);
-
-                    // Generate ValidationHistory Object
-                    var validationHistory = GetValidationHistory(email, filterResults);
-                    // Save to the storage
-                    await _validationHistoryRepository.AddAsync(validationHistory);
-                    DequeueProgress.Report(email);
+                        temp.Clear();
+                        validationHistories.Clear();
+                    }
+                    await Task.Delay(1000);
                 }
             }
         }
@@ -121,7 +156,7 @@ namespace Services.Services
         {
             if (filterResults == null)
             {
-                throw new ArgumentNullException("filterResults");
+                throw new ArgumentNullException(nameof(filterResults));
             }
             var message = string.Empty;
             filterResults.Where(s => s.Status == EmailStatus.Violated).ToList().ForEach(s =>
@@ -149,7 +184,8 @@ namespace Services.Services
 
         private async void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            await Task.Run(DoFilterAsync);
+            // Repeat the action
+            await DoMonitorAsync();
         }
     }
 }

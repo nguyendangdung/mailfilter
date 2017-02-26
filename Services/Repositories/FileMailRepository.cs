@@ -48,7 +48,6 @@ namespace Services.Repositories
                     EmailContentID = Guid.Parse(Path.GetFileNameWithoutExtension(file)),
                     MailSource = MailSource.FileSystem
                 });
-
             }
 
             return emails;
@@ -64,7 +63,22 @@ namespace Services.Repositories
             }
 
             // Delete the old one in the source
-            File.Delete(Path.Combine(SourceDirectory, $"{email.EmailContentID}.txt"));
+            try
+            {
+                File.Delete(Path.Combine(SourceDirectory, $"{email.EmailContentID}.txt"));
+            }
+            catch (Exception)
+            {
+                
+                // throw;
+            }
+            
+        }
+
+        public async Task UpdateCheckEmailsAsync(List<EmailContent> emails)
+        {
+            var tasks = emails.Select(UpdateCheckEmailAsync);
+            await Task.WhenAll(tasks);
         }
 
         private IEnumerable<string> GetAllMailFiles()

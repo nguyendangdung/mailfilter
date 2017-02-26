@@ -14,6 +14,8 @@ namespace Domain.IRepository
     {
         Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync();
         Task UpdateCheckEmailAsync(EmailContent email);
+
+        Task UpdateCheckEmailsAsync(List<EmailContent> emails);
         // Task Save
     }
 }

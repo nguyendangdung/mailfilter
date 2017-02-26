@@ -52,7 +52,15 @@
     <Compile Include="Filters\SendCustomerIDFilter.cs" />
     <Compile Include="Filters\SensitiveInfoFilter.cs" />
     <Compile Include="MailContext.cs" />
+    <Compile Include="Migrations\mails\201702261055054_init.cs" />
+    <Compile Include="Migrations\mails\201702261055054_init.Designer.cs">
+      <DependentUpon>201702261055054_init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\mails\Configuration.cs" />
+    <Compile Include="Migrations\validations\201702261054081_init.cs" />
+    <Compile Include="Migrations\validations\201702261054081_init.Designer.cs">
+      <DependentUpon>201702261054081_init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\validations\Configuration.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repositories\ValidationHistoryRepository.cs" />
@@ -75,6 +83,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\mails\201702261055054_init.resx">
+      <DependentUpon>201702261055054_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\validations\201702261054081_init.resx">
+      <DependentUpon>201702261054081_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,26 +15,41 @@ namespace GenerateFakeEmails
         static void Main(string[] args)
         {
             var source = @"C:\Users\dannguyen\Desktop\test";
-            var i = 0;
+            var ii = 0;
             using (var context = new MailContext())
             {
-                while (i < 1000)
+                while (true)
                 {
                     Thread.Sleep(1000);
-                    i++;
-                    var email = new EmailContent()
+                    ii++;
+
+                    
+                    for (int i = 0; i < 50; i++)
                     {
-                        EmailContentID = Guid.NewGuid(),
-                        Status = EmailStatus.NotChecked,
-                        Content = "random content here"
-                    };
+                        var email = new EmailContent()
+                        {
+                            EmailContentID = Guid.NewGuid(),
+                            Status = EmailStatus.NotChecked,
+                            Content = "random content here"
+                        };
 
-                    File.WriteAllText(Path.Combine(source, email.EmailContentID + ".txt"), email.Content);
+                        File.WriteAllText(Path.Combine(source, email.EmailContentID + ".txt"), email.Content);
+                    }
 
-                    email.EmailContentID = Guid.NewGuid();
-                    context.EmailContents.Add(email);
+                    var emails = new List<EmailContent>();
+
+                    for (int i = 0; i < 100; i++)
+                    {
+                        emails.Add(new EmailContent()
+                        {
+                            EmailContentID = Guid.NewGuid(),
+                            Status = EmailStatus.NotChecked,
+                            Content = "random content here"
+                        });
+                    }
+                    context.EmailContents.AddRange(emails);
                     context.SaveChanges();
-                    Console.WriteLine(email.EmailContentID);
+                    Console.WriteLine(ii);
                 }
             }
             

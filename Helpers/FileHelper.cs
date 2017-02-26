@@ -42,9 +42,7 @@ namespace Helpers
                 //file is not locked
                 return false;
             }
-
-            // todo need to handle in production
-            throw new Exception("File is not exist");
+            return true;
         }
 
         public static async Task<string> ReadContentAsync(string path)

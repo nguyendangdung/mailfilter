@@ -23,5 +23,6 @@ namespace Domain.Services
         void RemoveFilter(IFilter filter);
 
         Task StartFilterAsync();
+        Task MonitorAsync();
     }
 }
