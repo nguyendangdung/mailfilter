@@ -26,6 +26,10 @@ namespace App
         {
             InitializeComponent();
             _checkedEmails = new BindingList<EmailContent>();
+
+            srcTxt.Text = Settings.Default.src;
+            desTxt.Text = Settings.Default.des;
+
             _fileMailFilterService =
                 new MailFilterService(new FileMailRepository(Settings.Default.src, Settings.Default.des),
                     new ValidationHistoryRepository())

@@ -48,7 +48,6 @@
     <Compile Include="IRepository\IMailRepository.cs" />
     <Compile Include="IRepository\IValidationHistoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IMailFilterController.cs" />
     <Compile Include="Services\IMailFilterService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -129,7 +129,7 @@ namespace Services.Services
 
                         if (temp.Count >= 100)
                         {
-                            await _mailRepository.UpdateCheckEmailsAsync(temp);
+                            var successEmails = await _mailRepository.UpdateCheckEmailsAsync(temp);
                             await _validationHistoryRepository.AddRangeAsync(validationHistories);
 
                             temp.Clear();

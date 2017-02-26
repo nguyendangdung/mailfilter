@@ -23,28 +23,46 @@ namespace Services.Repositories
             
         }
 
-        public async Task UpdateCheckEmailAsync(EmailContent email)
+        public async Task<EmailContent> UpdateCheckEmailAsync(EmailContent email)
         {
-            using (var context = new MailContext())
+            try
             {
-                context.EmailContents.Attach(email);
-                context.Entry(email).State = EntityState.Modified;
-                await context.SaveChangesAsync();
+                using (var context = new MailContext())
+                {
+                    context.EmailContents.Attach(email);
+                    context.Entry(email).State = EntityState.Modified;
+                    await context.SaveChangesAsync();
+                    return email;
+                }
             }
+            catch (Exception)
+            {
+                return null;
+            }
+            
         }
 
-        public async Task UpdateCheckEmailsAsync(List<EmailContent> emails)
+        public async Task<List<EmailContent>> UpdateCheckEmailsAsync(List<EmailContent> emails)
         {
-            using (var context = new MailContext())
+            try
             {
-                emails.ForEach(s =>
+                using (var context = new MailContext())
                 {
-                    context.EmailContents.Attach(s);
-                    context.Entry(s).State = EntityState.Modified;
-                    
-                });
-                await context.SaveChangesAsync();
+                    emails.ForEach(s =>
+                    {
+                        context.EmailContents.Attach(s);
+                        context.Entry(s).State = EntityState.Modified;
+
+                    });
+                    await context.SaveChangesAsync();
+                    return emails;
+                }
             }
+            catch (Exception)
+            {
+                return new List<EmailContent>();
+            }
+            
         }
     }
 }

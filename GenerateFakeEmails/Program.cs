@@ -22,7 +22,7 @@ namespace GenerateFakeEmails
                 "12121212 kh_111111 alskdjflas laskdfj asdkljf alskdjf ksdfj"
             };
 
-            return contents[random.Next(0, 3)];
+            return contents[random.Next(0, 4)];
 
         }
         static void Main(string[] args)

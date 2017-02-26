@@ -13,9 +13,20 @@ namespace Domain.IRepository
     public interface IMailRepository
     {
         Task<IEnumerable<EmailContent>> GetNotCheckedEmailsAsync();
-        Task UpdateCheckEmailAsync(EmailContent email);
 
-        Task UpdateCheckEmailsAsync(List<EmailContent> emails);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Return the email if success</returns>
+        Task<EmailContent> UpdateCheckEmailAsync(EmailContent email);
+
+        /// <summary>
+        /// Save Checked emails
+        /// </summary>
+        /// <param name="emails"></param>
+        /// <returns></returns>
+        Task<List<EmailContent>> UpdateCheckEmailsAsync(List<EmailContent> emails);
         // Task Save
     }
 }

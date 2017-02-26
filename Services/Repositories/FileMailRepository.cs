@@ -38,49 +38,72 @@ namespace Services.Repositories
                 // Check file is free to read the content
                 if (FileHelper.IsFileLocked(file))
                 {
+                    // The file is not ready to read content, so ignore it
                     continue;
                 }
 
-                emails.Add(new EmailContent()
+                try
                 {
-                    Content = await FileHelper.ReadContentAsync(file),
-                    Status = EmailStatus.NotChecked,
-                    EmailContentID = Guid.Parse(Path.GetFileNameWithoutExtension(file)),
-                    MailSource = MailSource.FileSystem
-                });
+                    var content = await FileHelper.ReadContentAsync(file);
+                    emails.Add(new EmailContent()
+                    {
+                        Content = content,
+                        Status = EmailStatus.NotChecked,
+                        EmailContentID = Guid.Parse(Path.GetFileNameWithoutExtension(file)),
+                        MailSource = MailSource.FileSystem
+                    });
+                }
+                catch (Exception ex)
+                {
+                    // Failed to load mail content, keep going
+                    // throw;
+                }
+
+                
             }
 
+            // Got list of emails
             return emails;
         }
 
-        public async Task UpdateCheckEmailAsync(EmailContent email)
+        /// <summary>
+        /// Save checked email
+        /// 1) Delete the email from source dir
+        /// 2) Create a copy with the status in name
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task<EmailContent> UpdateCheckEmailAsync(EmailContent email)
         {
-            // Create a copy of processed email with status in name
-            var des = Path.Combine(DestinationDirectory, $"{email.EmailContentID}_{(int)email.Status}.txt");
-            using (var streamWriter = new StreamWriter(des))
-            {
-                await streamWriter.WriteAsync(email.Content);
-            }
-
-            // Delete the old one in the source
             try
             {
+                var des = Path.Combine(DestinationDirectory, $"{email.EmailContentID}_{(int)email.Status}.txt");
+                using (var streamWriter = new StreamWriter(des))
+                {
+                    await streamWriter.WriteAsync(email.Content);
+                }
                 File.Delete(Path.Combine(SourceDirectory, $"{email.EmailContentID}.txt"));
+                return email;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                return null;
                 // throw;
             }
             
         }
 
-        public async Task UpdateCheckEmailsAsync(List<EmailContent> emails)
+        public async Task<List<EmailContent>> UpdateCheckEmailsAsync(List<EmailContent> emails)
         {
-            var tasks = emails.Select(UpdateCheckEmailAsync);
+            var tasks = emails.Select(email => UpdateCheckEmailAsync(email)).ToList();
             await Task.WhenAll(tasks);
+            return tasks.Select(s => s.Result).Where(s => s != null).ToList();
         }
 
+        /// <summary>
+        /// Get all mail files from source directory
+        /// </summary>
+        /// <returns></returns>
         private IEnumerable<string> GetAllMailFiles()
         {
             var files = Directory.GetFiles(SourceDirectory).Where(s => s.EndsWith(".txt") && IsFileNameAGuid(s));
