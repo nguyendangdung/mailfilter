@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Domain.Entities;
 using Services;
 
@@ -14,6 +11,7 @@ namespace GenerateFakeEmails
     {
         static void Main(string[] args)
         {
+
             var source = @"C:\Users\dannguyen\Desktop\test";
             var ii = 0;
             using (var context = new MailContext())
@@ -52,10 +50,6 @@ namespace GenerateFakeEmails
                     Console.WriteLine(ii);
                 }
             }
-            
-
-
-            Console.WriteLine("Done");
         }
     }
 }
