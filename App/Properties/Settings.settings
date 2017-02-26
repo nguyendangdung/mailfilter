@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="App.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="src" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\job\projects\MailFilter\build\src</Value>
+    </Setting>
+    <Setting Name="des" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\job\projects\MailFilter\build\des</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

@@ -31,24 +31,29 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.workingPage = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.emailContentIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkedEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mailSourceDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.emailContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailSourceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dbEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.emailContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mailSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkedEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.historyPage = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -72,15 +77,23 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.workingPage.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).BeginInit();
             this.historyPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -90,57 +103,72 @@
             // 
             this.tabControl1.Controls.Add(this.workingPage);
             this.tabControl1.Controls.Add(this.historyPage);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 131);
+            this.tabControl1.Location = new System.Drawing.Point(12, 111);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1131, 454);
+            this.tabControl1.Size = new System.Drawing.Size(1107, 462);
             this.tabControl1.TabIndex = 0;
             // 
             // workingPage
             // 
-            this.workingPage.Controls.Add(this.groupBox3);
-            this.workingPage.Controls.Add(this.groupBox2);
-            this.workingPage.Controls.Add(this.groupBox1);
+            this.workingPage.Controls.Add(this.splitContainer1);
             this.workingPage.Location = new System.Drawing.Point(4, 22);
             this.workingPage.Name = "workingPage";
             this.workingPage.Padding = new System.Windows.Forms.Padding(3);
-            this.workingPage.Size = new System.Drawing.Size(1123, 428);
+            this.workingPage.Size = new System.Drawing.Size(1099, 436);
             this.workingPage.TabIndex = 0;
             this.workingPage.Text = "Working";
             this.workingPage.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // splitContainer1
             // 
-            this.groupBox3.Controls.Add(this.dataGridView4);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(762, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(358, 422);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Checked Items";
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // dataGridView4
+            // splitContainer1.Panel1
             // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.AllowUserToOrderColumns = true;
-            this.dataGridView4.AllowUserToResizeRows = false;
-            this.dataGridView4.AutoGenerateColumns = false;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(1093, 430);
+            this.splitContainer1.SplitterDistance = 368;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridView2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(368, 430);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "File Mails Queue";
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.emailContentIDDataGridViewTextBoxColumn2,
             this.contentDataGridViewTextBoxColumn2,
-            this.statusDataGridViewTextBoxColumn2});
-            this.dataGridView4.DataSource = this.checkedEmailContentBindingSource;
-            this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView4.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.RowHeadersVisible = false;
-            this.dataGridView4.Size = new System.Drawing.Size(352, 403);
-            this.dataGridView4.TabIndex = 0;
+            this.statusDataGridViewTextBoxColumn2,
+            this.mailSourceDataGridViewTextBoxColumn2});
+            this.dataGridView2.DataSource = this.fileEmailContentBindingSource;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(362, 411);
+            this.dataGridView2.TabIndex = 0;
             // 
             // emailContentIDDataGridViewTextBoxColumn2
             // 
@@ -163,33 +191,57 @@
             this.statusDataGridViewTextBoxColumn2.Name = "statusDataGridViewTextBoxColumn2";
             this.statusDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // checkedEmailContentBindingSource
+            // mailSourceDataGridViewTextBoxColumn2
             // 
-            this.checkedEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            this.mailSourceDataGridViewTextBoxColumn2.DataPropertyName = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn2.HeaderText = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn2.Name = "mailSourceDataGridViewTextBoxColumn2";
+            this.mailSourceDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // fileEmailContentBindingSource
+            // 
+            this.fileEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer2.Size = new System.Drawing.Size(721, 430);
+            this.splitContainer2.SplitterDistance = 370;
+            this.splitContainer2.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView3);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.Location = new System.Drawing.Point(376, 3);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(386, 422);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.Size = new System.Drawing.Size(370, 430);
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Db Mails";
+            this.groupBox2.Text = "Database Mails Queue";
             // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.AllowUserToOrderColumns = true;
-            this.dataGridView3.AllowUserToResizeRows = false;
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.emailContentIDDataGridViewTextBoxColumn1,
             this.contentDataGridViewTextBoxColumn1,
-            this.statusDataGridViewTextBoxColumn1});
+            this.statusDataGridViewTextBoxColumn1,
+            this.mailSourceDataGridViewTextBoxColumn1});
             this.dataGridView3.DataSource = this.dbEmailContentBindingSource;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(3, 16);
@@ -197,7 +249,7 @@
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(380, 403);
+            this.dataGridView3.Size = new System.Drawing.Size(364, 411);
             this.dataGridView3.TabIndex = 0;
             // 
             // emailContentIDDataGridViewTextBoxColumn1
@@ -221,42 +273,50 @@
             this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
             this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // mailSourceDataGridViewTextBoxColumn1
+            // 
+            this.mailSourceDataGridViewTextBoxColumn1.DataPropertyName = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn1.HeaderText = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn1.Name = "mailSourceDataGridViewTextBoxColumn1";
+            this.mailSourceDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // dbEmailContentBindingSource
             // 
             this.dbEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
             // 
-            // groupBox1
+            // groupBox3
             // 
-            this.groupBox1.Controls.Add(this.dataGridView2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(373, 422);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "File Mails";
+            this.groupBox3.Controls.Add(this.dataGridView4);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(347, 430);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Processed Mails";
             // 
-            // dataGridView2
+            // dataGridView4
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AllowUserToOrderColumns = true;
+            this.dataGridView4.AutoGenerateColumns = false;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.emailContentIDDataGridViewTextBoxColumn,
             this.contentDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.fileEmailContentBindingSource;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(367, 403);
-            this.dataGridView2.TabIndex = 0;
+            this.statusDataGridViewTextBoxColumn,
+            this.mailSourceDataGridViewTextBoxColumn});
+            this.dataGridView4.DataSource = this.checkedEmailContentBindingSource;
+            this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView4.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersVisible = false;
+            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView4.ShowCellToolTips = false;
+            this.dataGridView4.Size = new System.Drawing.Size(341, 411);
+            this.dataGridView4.TabIndex = 0;
             // 
             // emailContentIDDataGridViewTextBoxColumn
             // 
@@ -279,9 +339,16 @@
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             this.statusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // fileEmailContentBindingSource
+            // mailSourceDataGridViewTextBoxColumn
             // 
-            this.fileEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            this.mailSourceDataGridViewTextBoxColumn.DataPropertyName = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn.HeaderText = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn.Name = "mailSourceDataGridViewTextBoxColumn";
+            this.mailSourceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // checkedEmailContentBindingSource
+            // 
+            this.checkedEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
             // 
             // historyPage
             // 
@@ -301,7 +368,7 @@
             this.historyPage.Location = new System.Drawing.Point(4, 22);
             this.historyPage.Name = "historyPage";
             this.historyPage.Padding = new System.Windows.Forms.Padding(3);
-            this.historyPage.Size = new System.Drawing.Size(1123, 428);
+            this.historyPage.Size = new System.Drawing.Size(1099, 416);
             this.historyPage.TabIndex = 1;
             this.historyPage.Text = "History";
             this.historyPage.UseVisualStyleBackColor = true;
@@ -420,17 +487,16 @@
             this.groupBox4.Controls.Add(this.srcTxt);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Location = new System.Drawing.Point(12, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1131, 131);
+            this.groupBox4.Size = new System.Drawing.Size(1107, 93);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Configurations";
             // 
             // stopBtn
             // 
-            this.stopBtn.Location = new System.Drawing.Point(938, 50);
+            this.stopBtn.Location = new System.Drawing.Point(719, 46);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(137, 23);
             this.stopBtn.TabIndex = 9;
@@ -439,7 +505,7 @@
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(938, 20);
+            this.startBtn.Location = new System.Drawing.Point(719, 21);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(137, 23);
             this.startBtn.TabIndex = 8;
@@ -449,19 +515,19 @@
             // 
             // desTxt
             // 
+            this.desTxt.Enabled = false;
             this.desTxt.Location = new System.Drawing.Point(177, 53);
             this.desTxt.Name = "desTxt";
             this.desTxt.Size = new System.Drawing.Size(240, 20);
             this.desTxt.TabIndex = 5;
-            this.desTxt.Text = "C:\\Users\\dannguyen\\Desktop\\des";
             // 
             // srcTxt
             // 
+            this.srcTxt.Enabled = false;
             this.srcTxt.Location = new System.Drawing.Point(177, 28);
             this.srcTxt.Name = "srcTxt";
             this.srcTxt.Size = new System.Drawing.Size(240, 20);
             this.srcTxt.TabIndex = 4;
-            this.srcTxt.Text = "C:\\Users\\dannguyen\\Desktop\\test";
             // 
             // label8
             // 
@@ -495,15 +561,23 @@
             this.Text = "Mail Filter";
             this.tabControl1.ResumeLayout(false);
             this.workingPage.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).EndInit();
             this.historyPage.ResumeLayout(false);
             this.historyPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -531,12 +605,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox desTxt;
         private System.Windows.Forms.TextBox srcTxt;
@@ -544,21 +612,32 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.Button startBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isCheckingDataGridViewCheckBoxColumn1;
         private System.Windows.Forms.BindingSource fileEmailContentBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isCheckingDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource dbEmailContentBindingSource;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isCheckingDataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.BindingSource checkedEmailContentBindingSource;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isCheckingDataGridViewCheckBoxColumn2;
-        private System.Windows.Forms.BindingSource checkedEmailContentBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailSourceDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailSourceDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailSourceDataGridViewTextBoxColumn;
     }
 }
 

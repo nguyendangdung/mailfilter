@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace App.Properties {
+namespace GenerateFakeEmails.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -32,18 +32,6 @@ namespace App.Properties {
             }
             set {
                 this["src"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("E:\\job\\projects\\MailFilter\\build\\des")]
-        public string des {
-            get {
-                return ((string)(this["des"]));
-            }
-            set {
-                this["des"] = value;
             }
         }
     }

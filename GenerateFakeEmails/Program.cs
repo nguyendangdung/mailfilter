@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Domain.Entities;
+using GenerateFakeEmails.Properties;
 using Services;
 
 namespace GenerateFakeEmails
@@ -26,7 +27,7 @@ namespace GenerateFakeEmails
         static void Main(string[] args)
         {
 
-            var source = @"C:\Users\dannguyen\Desktop\test";
+            var source = Settings.Default.src;
             var ii = 0;
             using (var context = new MailContext())
             {
