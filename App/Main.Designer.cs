@@ -64,7 +64,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.stopBtn = new System.Windows.Forms.Button();
             this.startBtn = new System.Windows.Forms.Button();
             this.desTxt = new System.Windows.Forms.TextBox();
@@ -415,7 +414,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.saveBtn);
             this.groupBox4.Controls.Add(this.stopBtn);
             this.groupBox4.Controls.Add(this.startBtn);
             this.groupBox4.Controls.Add(this.desTxt);
@@ -429,15 +427,6 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Configurations";
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Location = new System.Drawing.Point(938, 80);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(137, 23);
-            this.saveBtn.TabIndex = 10;
-            this.saveBtn.Text = "Save Configurations";
-            this.saveBtn.UseVisualStyleBackColor = true;
             // 
             // stopBtn
             // 
@@ -553,7 +542,6 @@
         private System.Windows.Forms.TextBox srcTxt;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIDDataGridViewTextBoxColumn1;
