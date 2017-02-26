@@ -9,6 +9,20 @@ namespace GenerateFakeEmails
 {
     class Program
     {
+        private static Random random = new Random(1);
+        private static string GetRandomContent()
+        {
+
+            var contents = new List<string>()
+            {
+                "this is valid content",
+                "this contain customer id KH_123456 kh_askldfj kh_222222",
+                "12345678             ksdfalksd 9999999999999999999999"
+            };
+
+            return contents[random.Next(0, 2)];
+
+        }
         static void Main(string[] args)
         {
 
@@ -28,7 +42,7 @@ namespace GenerateFakeEmails
                         {
                             EmailContentID = Guid.NewGuid(),
                             Status = EmailStatus.NotChecked,
-                            Content = "random content here"
+                            Content = GetRandomContent()
                         };
 
                         File.WriteAllText(Path.Combine(source, email.EmailContentID + ".txt"), email.Content);
@@ -42,7 +56,7 @@ namespace GenerateFakeEmails
                         {
                             EmailContentID = Guid.NewGuid(),
                             Status = EmailStatus.NotChecked,
-                            Content = "random content here"
+                            Content = GetRandomContent()
                         });
                     }
                     context.EmailContents.AddRange(emails);
