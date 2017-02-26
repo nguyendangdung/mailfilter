@@ -10,14 +10,22 @@ namespace Services.Repositories
 {
     public class ValidationHistoryRepository : IValidationHistoryRepository
     {
+        private ValidationContext _context;
+
+        public ValidationHistoryRepository()
+        {
+            _context = new ValidationContext();
+        }
+
         public Task<IEnumerable<ValidationHistory>> GetAllAsync(int page = 1, int size = 20)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> AddAsync(ValidationHistory item)
+        public async Task<int> AddAsync(ValidationHistory item)
         {
-            throw new NotImplementedException();
+            _context.ValidationHistories.Add(item);
+            return await _context.SaveChangesAsync();
         }
     }
 }

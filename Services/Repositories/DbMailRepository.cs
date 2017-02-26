@@ -32,9 +32,11 @@ namespace Services.Repositories
                         }).ToListAsync();
         }
 
-        public Task UpdateCheckEmailAsync(EmailContent email)
+        public async Task UpdateCheckEmailAsync(EmailContent email)
         {
-            throw new NotImplementedException();
+            _context.EmailContents.Attach(email);
+            _context.Entry(email).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
     }
 }

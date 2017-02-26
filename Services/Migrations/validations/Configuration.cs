@@ -1,18 +1,19 @@
-namespace Services.Migrations
+namespace Services.Migrations.validations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MailContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ValidationContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"Migrations\validations";
         }
 
-        protected override void Seed(MailContext context)
+        protected override void Seed(ValidationContext context)
         {
             //  This method will be called after migrating to the latest version.
 

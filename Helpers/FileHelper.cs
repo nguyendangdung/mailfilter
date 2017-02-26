@@ -47,10 +47,15 @@ namespace Helpers
             throw new Exception("File is not exist");
         }
 
-        public static string ReadContent(string path)
+        public static async Task<string> ReadContentAsync(string path)
         {
             // todo need to wrap in try/catch or a way to handle exceptions in production
-            return File.ReadAllText(path);
+            using (var reader = File.OpenText(path))
+            {
+                var fileText = await reader.ReadToEndAsync();
+                return fileText;
+            }
+            // return File.ReadAllText(path);
         }
     }
 }

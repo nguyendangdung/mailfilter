@@ -52,15 +52,8 @@
     <Compile Include="Filters\SendCustomerIDFilter.cs" />
     <Compile Include="Filters\SensitiveInfoFilter.cs" />
     <Compile Include="MailContext.cs" />
-    <Compile Include="Migrations\201702251732509_next.cs" />
-    <Compile Include="Migrations\201702251732509_next.Designer.cs">
-      <DependentUpon>201702251732509_next.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702251735068_next1.cs" />
-    <Compile Include="Migrations\201702251735068_next1.Designer.cs">
-      <DependentUpon>201702251735068_next1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\mails\Configuration.cs" />
+    <Compile Include="Migrations\validations\Configuration.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Repositories\ValidationHistoryRepository.cs" />
     <Compile Include="Repositories\DbMailRepository.cs" />
@@ -82,14 +75,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702251732509_next.resx">
-      <DependentUpon>201702251732509_next.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702251735068_next1.resx">
-      <DependentUpon>201702251735068_next1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -43,7 +43,7 @@ namespace Services.Repositories
 
                 emails.Add(new EmailContent()
                 {
-                    Content = FileHelper.ReadContent(file),
+                    Content = await FileHelper.ReadContentAsync(file),
                     Status = EmailStatus.NotChecked,
                     EmailContentID = Guid.Parse(Path.GetFileNameWithoutExtension(file)),
                     MailSource = MailSource.FileSystem
@@ -54,9 +54,17 @@ namespace Services.Repositories
             return emails;
         }
 
-        public Task UpdateCheckEmailAsync(EmailContent email)
+        public async Task UpdateCheckEmailAsync(EmailContent email)
         {
-            throw new NotImplementedException();
+            // Create a copy of processed email with status in name
+            var des = Path.Combine(DestinationDirectory, $"{email.EmailContentID}_{(int)email.Status}.txt");
+            using (var streamWriter = new StreamWriter(des))
+            {
+                await streamWriter.WriteAsync(email.Content);
+            }
+
+            // Delete the old one in the source
+            File.Delete(Path.Combine(SourceDirectory, $"{email.EmailContentID}.txt"));
         }
 
         private IEnumerable<string> GetAllMailFiles()

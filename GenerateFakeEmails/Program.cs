@@ -30,6 +30,8 @@ namespace GenerateFakeEmails
                     };
 
                     File.WriteAllText(Path.Combine(source, email.EmailContentID + ".txt"), email.Content);
+
+                    email.EmailContentID = Guid.NewGuid();
                     context.EmailContents.Add(email);
                     context.SaveChanges();
                     Console.WriteLine(email.EmailContentID);

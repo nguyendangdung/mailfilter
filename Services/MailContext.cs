@@ -14,7 +14,7 @@ namespace Services
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EmailContent>().Ignore(s => s.IsChecking);
+            // modelBuilder.Entity<EmailContent>().Ignore(s => s.IsChecking);
             modelBuilder.Entity<EmailContent>().Ignore(s => s.MailSource);
 
             base.OnModelCreating(modelBuilder);
