@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -7,8 +8,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Properties;
 using Domain.Entities;
+using Domain.Filters;
 using Domain.Services;
 using Services;
+using Services.Filters;
 using Services.Repositories;
 using Services.Services;
 
@@ -27,17 +30,20 @@ namespace App
                 new MailFilterService(new FileMailRepository(Settings.Default.src, Settings.Default.des),
                     new ValidationHistoryRepository())
                 {
-                    OnEmailChecked = e =>
+                    OnEmailChecked = e => _checkedEmails.Add(e),
+                    Filters = new Collection<IFilter>()
                     {
-                        _checkedEmails.Add(e);
+                        new SendCustomerIDFilter(), new SensitiveInfoFilter()
                     }
                 };
 
             _dbMailFilterService = new MailFilterService(new DbMailRepository(), new ValidationHistoryRepository())
             {
-                OnEmailChecked = e =>
+                OnEmailChecked = e => _checkedEmails.Add(e),
+                Filters = new Collection<IFilter>()
                 {
-                    _checkedEmails.Add(e);
+                    new SendCustomerIDFilter(),
+                    new SensitiveInfoFilter()
                 }
             };
 

@@ -18,7 +18,7 @@ namespace Services.Filters
 
         public FilterResult CheckMail(EmailContent email)
         {
-            var words = email.Content.Split(new char[0]).Cast<string>();
+            var words = email.Content.Split(new char[0]).Where(s => s.Length > 0);
 
             var illegalWords =
                 words.Where(s => s.Length == 9 && s.ToLower().StartsWith("kh_") && s.Substring(3, 6).All(char.IsDigit));

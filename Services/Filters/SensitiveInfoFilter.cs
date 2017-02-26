@@ -22,7 +22,7 @@ namespace Services.Filters
 
         public FilterResult CheckMail(EmailContent email)
         {
-            var words = email.Content.Split(new char[0]).Cast<string>();
+            var words = email.Content.Split(new char[0]).Where(s => s.Length > 0);
             var illegalWords = words.Where(s => s.Length >= 8 && s.All(Char.IsDigit));
             if (illegalWords.Any())
             {

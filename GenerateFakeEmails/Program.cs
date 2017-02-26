@@ -18,10 +18,11 @@ namespace GenerateFakeEmails
             {
                 "this is valid content",
                 "this contain customer id KH_123456 kh_askldfj kh_222222",
-                "12345678             ksdfalksd 9999999999999999999999"
+                "12345678             ksdfalksd 9999999999999999999999",
+                "12121212 kh_111111 alskdjflas laskdfj asdkljf alskdjf ksdfj"
             };
 
-            return contents[random.Next(0, 2)];
+            return contents[random.Next(0, 3)];
 
         }
         static void Main(string[] args)
