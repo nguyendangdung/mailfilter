@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFakeEmails", "Gener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesTests", "ServicesTests\ServicesTests.csproj", "{6A68E2EE-24A7-4F76-800B-DEE9B879E4E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetQuery", "GetQuery\GetQuery.csproj", "{81FFF277-8889-4EC4-B97B-725FA94C50DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B7D68650-EEAE-4A52-AF19-41A849340FBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,8 +49,16 @@ Global
 		{6A68E2EE-24A7-4F76-800B-DEE9B879E4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A68E2EE-24A7-4F76-800B-DEE9B879E4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A68E2EE-24A7-4F76-800B-DEE9B879E4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81FFF277-8889-4EC4-B97B-725FA94C50DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81FFF277-8889-4EC4-B97B-725FA94C50DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81FFF277-8889-4EC4-B97B-725FA94C50DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81FFF277-8889-4EC4-B97B-725FA94C50DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6562389D-C711-4781-85AB-D5B29A1E70AD} = {B7D68650-EEAE-4A52-AF19-41A849340FBC}
+		{81FFF277-8889-4EC4-B97B-725FA94C50DC} = {B7D68650-EEAE-4A52-AF19-41A849340FBC}
 	EndGlobalSection
 EndGlobal
