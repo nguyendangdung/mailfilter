@@ -38,7 +38,7 @@ namespace App
 
             _fileMailFilterService =
                 new MailFilterService(new FileMailRepository(Settings.Default.src, Settings.Default.des),
-                    new ValidationHistoryRepository())
+                    new AdoValidationHistoryRepository())
                 {
                     OnEmailChecked = e => AddToRecentList(e),
                     Filters = new Collection<IFilter>()

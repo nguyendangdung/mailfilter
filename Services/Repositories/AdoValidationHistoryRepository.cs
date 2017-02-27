@@ -38,8 +38,8 @@ namespace Services.Repositories
                 {
                     await con.OpenAsync();
                     var sql =
-                        "INSERT [dbo].[ValidationHistories]([ValidationHistoryID], [Content], [Status], [Description], [FileName], [EmailContentId], [ValidationDTG]) " +
-                        "VALUES (@0, @1, @2, @3, @4, @5, @6);";
+                        "INSERT [dbo].[ValidationHistories]([ValidationHistoryID], [Content], [Status], [Description], [FileName], [EmailContentId], [ValidationDTG], [AsciiContent]) " +
+                        "VALUES (@0, @1, @2, @3, @4, @5, @6, @7);";
                     using (var cmd = new SqlCommand(sql, con))
                     {
                         foreach (var s in items)
@@ -73,7 +73,10 @@ namespace Services.Repositories
                             {
                                 Value = s.ValidationDTG.GetDbValue()
                             });
-
+                            cmd.Parameters.Add(new SqlParameter("@7", SqlDbType.NVarChar)
+                            {
+                                Value = s.AsciiContent.GetDbValue()
+                            });
                             try
                             {
                                 await cmd.ExecuteNonQueryAsync();

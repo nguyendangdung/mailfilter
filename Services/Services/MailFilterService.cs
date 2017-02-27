@@ -11,6 +11,7 @@ using Domain.Entities;
 using Domain.Filters;
 using Domain.IRepository;
 using Domain.Services;
+using Helpers;
 using Timer = System.Timers.Timer;
 
 namespace Services.Services
@@ -183,6 +184,7 @@ namespace Services.Services
             {
                 Status = email.Status,
                 Content = email.Content,
+                AsciiContent = UnicodeStrings.LatinToAscii(email.Content),
                 EmailContentId = email.MailSource == MailSource.Db ? email.EmailContentID : (Guid?)null,
                 ValidationDTG = DateTime.Now,
                 ValidationHistoryID = Guid.NewGuid(),

@@ -10,6 +10,7 @@ namespace Domain.Entities
     {
         public Guid EmailContentID { get; set; }
         public string Content { get; set; }
+        public string AsciiContent { get; set; }
         public EmailStatus Status { get; set; }
         public MailSource MailSource { get; set; }
     }

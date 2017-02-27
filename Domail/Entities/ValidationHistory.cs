@@ -10,6 +10,7 @@ namespace Domain.Entities
     {
         public Guid ValidationHistoryID { get; set; }
         public string Content { get; set; }
+        public string AsciiContent { get; set; }
         public EmailStatus Status { get; set; }
         public string Description { get; set; }
         public string FileName { get; set; }
