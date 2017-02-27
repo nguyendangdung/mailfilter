@@ -77,11 +77,14 @@ namespace Services.Repositories
         {
             try
             {
+                // Create a copy with validation status in name
                 var des = Path.Combine(DestinationDirectory, $"{email.EmailContentID}_{(int)email.Status}.txt");
                 using (var streamWriter = new StreamWriter(des))
                 {
                     await streamWriter.WriteAsync(email.Content);
                 }
+
+                // Delete the old one
                 File.Delete(Path.Combine(SourceDirectory, $"{email.EmailContentID}.txt"));
                 return email;
             }

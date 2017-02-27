@@ -124,7 +124,8 @@ namespace Services.Services
                         // Generate ValidationHistory Object
                         var validationHistory = GetValidationHistory(email, filterResults);
                         validationHistories.Add(validationHistory);
-                        
+
+                        // Update working list
                         DequeueProgress.Report(email);
 
                         if (temp.Count >= 100)
