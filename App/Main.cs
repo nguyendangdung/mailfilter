@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Properties;
+using Domain;
 using Domain.Entities;
 using Domain.Filters;
 using Domain.Services;
@@ -121,19 +122,39 @@ namespace App
             }
         }
 
-        //private void Main_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    if (VScroll)
-        //    {
-                
-        //    }
-        //    // stop before close the app
-        //    if (_isRunning && !_isClosing)
-        //    {
-        //        _isClosing = true;
-        //        _source.Cancel();
-        //        e.Cancel = true;
-        //    }
-        //}
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // get search filter object
+        }
+
+
+
+        private SearchFilter GetSearchFilter()
+        {
+            var search = new SearchFilter()
+            {
+                FileNameOrId = fileNameOrIdTxt.Text,
+                Content = emaiContentTxt.Text,
+                From = @from.Value,
+                To = to.Value,
+                ViolatedContent = violatedContentTxt.Text,
+                EmailStatuses = new List<EmailStatus>()
+            };
+
+            if (violatedChk.Checked)
+            {
+                search.EmailStatuses.Add(EmailStatus.Violated);
+            }
+            if (notViolatedChk.Checked)
+            {
+                search.EmailStatuses.Add(EmailStatus.NotViolated);
+            }
+            if (errorChk.Checked)
+            {
+                search.EmailStatuses.Add(EmailStatus.Error);
+            }
+
+            return search;
+        }
     }
 }

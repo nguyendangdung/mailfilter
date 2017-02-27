@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain;
 using Domain.Entities;
 using Domain.IRepository;
 using Helpers;
@@ -15,7 +16,7 @@ namespace Services.Repositories
     public class AdoValidationHistoryRepository : IValidationHistoryRepository
     {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["ValidationContext"].ConnectionString;
-        public Task<IEnumerable<ValidationHistory>> GetAllAsync(int page = 1, int size = 20)
+        public Task<IEnumerable<ValidationHistory>> GetAllAsync(SearchFilter filter, int page = 1, int size = 20)
         {
             throw new NotImplementedException();
         }

@@ -55,12 +55,12 @@
             this.mailSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkedEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.historyPage = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBtn = new System.Windows.Forms.Button();
+            this.violatedContentTxt = new System.Windows.Forms.TextBox();
+            this.to = new System.Windows.Forms.DateTimePicker();
+            this.from = new System.Windows.Forms.DateTimePicker();
+            this.emaiContentTxt = new System.Windows.Forms.TextBox();
+            this.fileNameOrIdTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -75,6 +75,9 @@
             this.srcTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.violatedChk = new System.Windows.Forms.CheckBox();
+            this.notViolatedChk = new System.Windows.Forms.CheckBox();
+            this.errorChk = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.workingPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -352,12 +355,15 @@
             // 
             // historyPage
             // 
-            this.historyPage.Controls.Add(this.button1);
-            this.historyPage.Controls.Add(this.textBox3);
-            this.historyPage.Controls.Add(this.dateTimePicker2);
-            this.historyPage.Controls.Add(this.dateTimePicker1);
-            this.historyPage.Controls.Add(this.textBox2);
-            this.historyPage.Controls.Add(this.textBox1);
+            this.historyPage.Controls.Add(this.errorChk);
+            this.historyPage.Controls.Add(this.notViolatedChk);
+            this.historyPage.Controls.Add(this.violatedChk);
+            this.historyPage.Controls.Add(this.searchBtn);
+            this.historyPage.Controls.Add(this.violatedContentTxt);
+            this.historyPage.Controls.Add(this.to);
+            this.historyPage.Controls.Add(this.from);
+            this.historyPage.Controls.Add(this.emaiContentTxt);
+            this.historyPage.Controls.Add(this.fileNameOrIdTxt);
             this.historyPage.Controls.Add(this.label6);
             this.historyPage.Controls.Add(this.label5);
             this.historyPage.Controls.Add(this.label4);
@@ -373,49 +379,50 @@
             this.historyPage.Text = "History";
             this.historyPage.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // searchBtn
             // 
-            this.button1.Location = new System.Drawing.Point(553, 121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Tìm kiếm";
-            this.button1.UseVisualStyleBackColor = true;
+            this.searchBtn.Location = new System.Drawing.Point(553, 121);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(75, 23);
+            this.searchBtn.TabIndex = 12;
+            this.searchBtn.Text = "Tìm kiếm";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox3
+            // violatedContentTxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(460, 49);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 11;
+            this.violatedContentTxt.Location = new System.Drawing.Point(460, 49);
+            this.violatedContentTxt.Name = "violatedContentTxt";
+            this.violatedContentTxt.Size = new System.Drawing.Size(231, 20);
+            this.violatedContentTxt.TabIndex = 11;
             // 
-            // dateTimePicker2
+            // to
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(398, 83);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 10;
+            this.to.Location = new System.Drawing.Point(398, 83);
+            this.to.Name = "to";
+            this.to.Size = new System.Drawing.Size(200, 20);
+            this.to.TabIndex = 10;
             // 
-            // dateTimePicker1
+            // from
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(121, 83);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.from.Location = new System.Drawing.Point(121, 83);
+            this.from.Name = "from";
+            this.from.Size = new System.Drawing.Size(200, 20);
+            this.from.TabIndex = 9;
             // 
-            // textBox2
+            // emaiContentTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(121, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 8;
+            this.emaiContentTxt.Location = new System.Drawing.Point(121, 49);
+            this.emaiContentTxt.Name = "emaiContentTxt";
+            this.emaiContentTxt.Size = new System.Drawing.Size(200, 20);
+            this.emaiContentTxt.TabIndex = 8;
             // 
-            // textBox1
+            // fileNameOrIdTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(121, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.fileNameOrIdTxt.Location = new System.Drawing.Point(121, 13);
+            this.fileNameOrIdTxt.Name = "fileNameOrIdTxt";
+            this.fileNameOrIdTxt.Size = new System.Drawing.Size(200, 20);
+            this.fileNameOrIdTxt.TabIndex = 7;
             // 
             // label6
             // 
@@ -549,6 +556,36 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Source Directory";
             // 
+            // violatedChk
+            // 
+            this.violatedChk.AutoSize = true;
+            this.violatedChk.Location = new System.Drawing.Point(121, 121);
+            this.violatedChk.Name = "violatedChk";
+            this.violatedChk.Size = new System.Drawing.Size(65, 17);
+            this.violatedChk.TabIndex = 13;
+            this.violatedChk.Text = "Vi Phạm";
+            this.violatedChk.UseVisualStyleBackColor = true;
+            // 
+            // notViolatedChk
+            // 
+            this.notViolatedChk.AutoSize = true;
+            this.notViolatedChk.Location = new System.Drawing.Point(241, 121);
+            this.notViolatedChk.Name = "notViolatedChk";
+            this.notViolatedChk.Size = new System.Drawing.Size(99, 17);
+            this.notViolatedChk.TabIndex = 14;
+            this.notViolatedChk.Text = "Không Vi Phạm";
+            this.notViolatedChk.UseVisualStyleBackColor = true;
+            // 
+            // errorChk
+            // 
+            this.errorChk.AutoSize = true;
+            this.errorChk.Location = new System.Drawing.Point(398, 120);
+            this.errorChk.Name = "errorChk";
+            this.errorChk.Size = new System.Drawing.Size(40, 17);
+            this.errorChk.TabIndex = 15;
+            this.errorChk.Text = "Lỗi";
+            this.errorChk.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,18 +632,18 @@
         private System.Windows.Forms.TabPage workingPage;
         private System.Windows.Forms.TabPage historyPage;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox violatedContentTxt;
+        private System.Windows.Forms.DateTimePicker to;
+        private System.Windows.Forms.DateTimePicker from;
+        private System.Windows.Forms.TextBox emaiContentTxt;
+        private System.Windows.Forms.TextBox fileNameOrIdTxt;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox desTxt;
         private System.Windows.Forms.TextBox srcTxt;
@@ -640,6 +677,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mailSourceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.CheckBox errorChk;
+        private System.Windows.Forms.CheckBox notViolatedChk;
+        private System.Windows.Forms.CheckBox violatedChk;
     }
 }
 
