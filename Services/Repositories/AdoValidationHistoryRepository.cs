@@ -16,9 +16,64 @@ namespace Services.Repositories
     public class AdoValidationHistoryRepository : IValidationHistoryRepository
     {
         private readonly string _connectionString = ConfigurationManager.ConnectionStrings["ValidationContext"].ConnectionString;
-        public Task<IEnumerable<ValidationHistory>> GetAllAsync(SearchFilter filter, int page = 1, int size = 20)
+        public async Task<IEnumerable<ValidationHistory>> GetAllAsync(SearchFilter filter, int page = 1, int size = 20)
         {
-            throw new NotImplementedException();
+            var result = new List<ValidationHistory>();
+            using (var con = new SqlConnection(_connectionString))
+            {
+                await con.OpenAsync();
+                using (var cmd = new SqlCommand("Search", con) {CommandType = CommandType.StoredProcedure})
+                {
+                    cmd.Parameters.AddWithValue("@fileNameOrId",
+                        string.IsNullOrWhiteSpace(filter?.FileNameOrId) ? DBNull.Value : (object)filter.FileNameOrId);
+                    cmd.Parameters.AddWithValue("@emailContent",
+                        string.IsNullOrWhiteSpace(filter?.Content) ? DBNull.Value : (object)UnicodeStrings.LatinToAscii(filter.Content));
+                    cmd.Parameters.AddWithValue("@violatedContent",
+                        string.IsNullOrWhiteSpace(filter?.ViolatedContent) ? DBNull.Value : (object)filter.ViolatedContent);
+
+
+                    cmd.Parameters.AddWithValue("@from", (object)filter?.From ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@to", (object)filter?.To ?? DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@violated", filter?.Violated == true ? (object)(int)EmailStatus.Violated : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@notViolated", filter?.NotViolated == true ? (object)(int)EmailStatus.NotViolated : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@error", filter?.Error == true ? (object)(int)EmailStatus.Error : DBNull.Value);
+
+                    //cmd.Parameters.AddWithValue("@violated", DBNull.Value);
+                    //cmd.Parameters.AddWithValue("@notViolated", DBNull.Value);
+                    //cmd.Parameters.AddWithValue("@error", DBNull.Value);
+
+                    var sql = cmd.CommandAsSql();
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (reader.Read())
+                        {
+                            try
+                            {
+                                result.Add(new ValidationHistory()
+                                {
+                                    Status = (EmailStatus)(int)reader["Status"],
+                                    Content = reader["Content"].ToString(),
+                                    ValidationHistoryID = (Guid)reader["ValidationHistoryID"],
+                                    ValidationDTG = (DateTime)reader["ValidationDTG"],
+                                    EmailContentId = reader["EmailContentId"] is DBNull ? null : (Guid?)reader["EmailContentId"],
+                                    Description = reader["Description"]?.ToString(),
+                                    FileName = reader["FileName"]?.ToString()
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                
+                                throw;
+                            }
+                            
+                        }
+
+                        return result;
+                    }
+                }
+            }
         }
 
         public Task AddAsync(ValidationHistory item)

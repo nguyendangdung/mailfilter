@@ -14,6 +14,8 @@ namespace Domain
         public string ViolatedContent { get; set; }
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
-        public List<EmailStatus> EmailStatuses { get; set; }
+        public bool Violated { get; set; }
+        public bool NotViolated { get; set; }
+        public bool Error { get; set; }
     }
 }

@@ -11,6 +11,7 @@ using App.Properties;
 using Domain;
 using Domain.Entities;
 using Domain.Filters;
+using Domain.IRepository;
 using Domain.Services;
 using Services;
 using Helpers;
@@ -28,9 +29,13 @@ namespace App
         private readonly MailFilterService _fileMailFilterService;
         private readonly MailFilterService _dbMailFilterService;
         private readonly BindingList<EmailContent> _recentCheckedEmails;
+        private readonly IValidationHistoryRepository _validationHistoryRepository;
         public Main()
         {
             InitializeComponent();
+
+            _validationHistoryRepository = new AdoValidationHistoryRepository();
+
             _recentCheckedEmails = new BindingList<EmailContent>();
 
             srcTxt.Text = Settings.Default.src;
@@ -38,7 +43,7 @@ namespace App
 
             _fileMailFilterService =
                 new MailFilterService(new FileMailRepository(Settings.Default.src, Settings.Default.des),
-                    new AdoValidationHistoryRepository())
+                    _validationHistoryRepository)
                 {
                     OnEmailChecked = e => AddToRecentList(e),
                     Filters = new Collection<IFilter>()
@@ -47,7 +52,7 @@ namespace App
                     }
                 };
 
-            _dbMailFilterService = new MailFilterService(new AdoMailRepository(), new AdoValidationHistoryRepository())
+            _dbMailFilterService = new MailFilterService(new AdoMailRepository(), _validationHistoryRepository)
             {
                 OnEmailChecked = e => AddToRecentList(e),
                 Filters = new Collection<IFilter>()
@@ -122,9 +127,10 @@ namespace App
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            // get search filter object
+            var validationHistories = await _validationHistoryRepository.GetAllAsync(GetSearchFilter());
+            validationHistoryBindingSource.DataSource = new BindingList<ValidationHistory>(validationHistories.ToList());
         }
 
 
@@ -138,23 +144,18 @@ namespace App
                 From = @from.Value,
                 To = to.Value,
                 ViolatedContent = violatedContentTxt.Text,
-                EmailStatuses = new List<EmailStatus>()
+                NotViolated = notViolatedChk.Checked,
+                Error = errorChk.Checked,
+                Violated = violatedChk.Checked
             };
 
-            if (violatedChk.Checked)
-            {
-                search.EmailStatuses.Add(EmailStatus.Violated);
-            }
-            if (notViolatedChk.Checked)
-            {
-                search.EmailStatuses.Add(EmailStatus.NotViolated);
-            }
-            if (errorChk.Checked)
-            {
-                search.EmailStatuses.Add(EmailStatus.Error);
-            }
-
             return search;
+        }
+
+        private async void Main_Load(object sender, EventArgs e)
+        {
+            var validationHistories = await _validationHistoryRepository.GetAllAsync(null);
+            validationHistoryBindingSource.DataSource = new BindingList<ValidationHistory>(validationHistories.ToList());
         }
     }
 }

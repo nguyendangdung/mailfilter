@@ -22,6 +22,7 @@ namespace Services
         {
             // modelBuilder.Entity<EmailContent>().Ignore(s => s.IsChecking);
             modelBuilder.Entity<EmailContent>().Ignore(s => s.MailSource);
+            modelBuilder.Entity<EmailContent>().Property(s => s.Content).IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

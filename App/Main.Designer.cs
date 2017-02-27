@@ -34,26 +34,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.emailContentIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailSourceDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.emailContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailSourceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dbEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.emailContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkedEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.historyPage = new System.Windows.Forms.TabPage();
             this.searchBtn = new System.Windows.Forms.Button();
             this.violatedContentTxt = new System.Windows.Forms.TextBox();
@@ -67,7 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.validationHistoryDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.stopBtn = new System.Windows.Forms.Button();
             this.startBtn = new System.Windows.Forms.Button();
@@ -78,6 +63,29 @@
             this.violatedChk = new System.Windows.Forms.CheckBox();
             this.notViolatedChk = new System.Windows.Forms.CheckBox();
             this.errorChk = new System.Windows.Forms.CheckBox();
+            this.emailContentIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailSourceDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.emailContentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailSourceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dbEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.emailContentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailSourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkedEmailContentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.validationHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.validationHistoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contentDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailContentIdDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validationDTGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.workingPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -86,20 +94,21 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).BeginInit();
             this.historyPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validationHistoryDataGridView)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validationHistoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -173,38 +182,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(362, 411);
             this.dataGridView2.TabIndex = 0;
             // 
-            // emailContentIDDataGridViewTextBoxColumn2
-            // 
-            this.emailContentIDDataGridViewTextBoxColumn2.DataPropertyName = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn2.HeaderText = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn2.Name = "emailContentIDDataGridViewTextBoxColumn2";
-            this.emailContentIDDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // contentDataGridViewTextBoxColumn2
-            // 
-            this.contentDataGridViewTextBoxColumn2.DataPropertyName = "Content";
-            this.contentDataGridViewTextBoxColumn2.HeaderText = "Content";
-            this.contentDataGridViewTextBoxColumn2.Name = "contentDataGridViewTextBoxColumn2";
-            this.contentDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn2
-            // 
-            this.statusDataGridViewTextBoxColumn2.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn2.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn2.Name = "statusDataGridViewTextBoxColumn2";
-            this.statusDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // mailSourceDataGridViewTextBoxColumn2
-            // 
-            this.mailSourceDataGridViewTextBoxColumn2.DataPropertyName = "MailSource";
-            this.mailSourceDataGridViewTextBoxColumn2.HeaderText = "MailSource";
-            this.mailSourceDataGridViewTextBoxColumn2.Name = "mailSourceDataGridViewTextBoxColumn2";
-            this.mailSourceDataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // fileEmailContentBindingSource
-            // 
-            this.fileEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -255,38 +232,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(364, 411);
             this.dataGridView3.TabIndex = 0;
             // 
-            // emailContentIDDataGridViewTextBoxColumn1
-            // 
-            this.emailContentIDDataGridViewTextBoxColumn1.DataPropertyName = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn1.HeaderText = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn1.Name = "emailContentIDDataGridViewTextBoxColumn1";
-            this.emailContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // contentDataGridViewTextBoxColumn1
-            // 
-            this.contentDataGridViewTextBoxColumn1.DataPropertyName = "Content";
-            this.contentDataGridViewTextBoxColumn1.HeaderText = "Content";
-            this.contentDataGridViewTextBoxColumn1.Name = "contentDataGridViewTextBoxColumn1";
-            this.contentDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // mailSourceDataGridViewTextBoxColumn1
-            // 
-            this.mailSourceDataGridViewTextBoxColumn1.DataPropertyName = "MailSource";
-            this.mailSourceDataGridViewTextBoxColumn1.HeaderText = "MailSource";
-            this.mailSourceDataGridViewTextBoxColumn1.Name = "mailSourceDataGridViewTextBoxColumn1";
-            this.mailSourceDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dbEmailContentBindingSource
-            // 
-            this.dbEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridView4);
@@ -321,38 +266,6 @@
             this.dataGridView4.Size = new System.Drawing.Size(341, 411);
             this.dataGridView4.TabIndex = 0;
             // 
-            // emailContentIDDataGridViewTextBoxColumn
-            // 
-            this.emailContentIDDataGridViewTextBoxColumn.DataPropertyName = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn.HeaderText = "EmailContentID";
-            this.emailContentIDDataGridViewTextBoxColumn.Name = "emailContentIDDataGridViewTextBoxColumn";
-            this.emailContentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // contentDataGridViewTextBoxColumn
-            // 
-            this.contentDataGridViewTextBoxColumn.DataPropertyName = "Content";
-            this.contentDataGridViewTextBoxColumn.HeaderText = "Content";
-            this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
-            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mailSourceDataGridViewTextBoxColumn
-            // 
-            this.mailSourceDataGridViewTextBoxColumn.DataPropertyName = "MailSource";
-            this.mailSourceDataGridViewTextBoxColumn.HeaderText = "MailSource";
-            this.mailSourceDataGridViewTextBoxColumn.Name = "mailSourceDataGridViewTextBoxColumn";
-            this.mailSourceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // checkedEmailContentBindingSource
-            // 
-            this.checkedEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
-            // 
             // historyPage
             // 
             this.historyPage.Controls.Add(this.errorChk);
@@ -370,7 +283,7 @@
             this.historyPage.Controls.Add(this.label3);
             this.historyPage.Controls.Add(this.label2);
             this.historyPage.Controls.Add(this.label1);
-            this.historyPage.Controls.Add(this.dataGridView1);
+            this.historyPage.Controls.Add(this.validationHistoryDataGridView);
             this.historyPage.Location = new System.Drawing.Point(4, 22);
             this.historyPage.Name = "historyPage";
             this.historyPage.Padding = new System.Windows.Forms.Padding(3);
@@ -478,13 +391,28 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "FileName/ID";
             // 
-            // dataGridView1
+            // validationHistoryDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 168);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1087, 265);
-            this.dataGridView1.TabIndex = 0;
+            this.validationHistoryDataGridView.AllowUserToAddRows = false;
+            this.validationHistoryDataGridView.AllowUserToDeleteRows = false;
+            this.validationHistoryDataGridView.AllowUserToOrderColumns = true;
+            this.validationHistoryDataGridView.AutoGenerateColumns = false;
+            this.validationHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.validationHistoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.validationHistoryIDDataGridViewTextBoxColumn,
+            this.contentDataGridViewTextBoxColumn3,
+            this.statusDataGridViewTextBoxColumn3,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.fileNameDataGridViewTextBoxColumn,
+            this.emailContentIdDataGridViewTextBoxColumn3,
+            this.validationDTGDataGridViewTextBoxColumn});
+            this.validationHistoryDataGridView.DataSource = this.validationHistoryBindingSource;
+            this.validationHistoryDataGridView.Location = new System.Drawing.Point(6, 168);
+            this.validationHistoryDataGridView.Name = "validationHistoryDataGridView";
+            this.validationHistoryDataGridView.ReadOnly = true;
+            this.validationHistoryDataGridView.RowHeadersVisible = false;
+            this.validationHistoryDataGridView.Size = new System.Drawing.Size(1087, 265);
+            this.validationHistoryDataGridView.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -586,6 +514,155 @@
             this.errorChk.Text = "Lỗi";
             this.errorChk.UseVisualStyleBackColor = true;
             // 
+            // emailContentIDDataGridViewTextBoxColumn2
+            // 
+            this.emailContentIDDataGridViewTextBoxColumn2.DataPropertyName = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn2.HeaderText = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn2.Name = "emailContentIDDataGridViewTextBoxColumn2";
+            this.emailContentIDDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn2
+            // 
+            this.contentDataGridViewTextBoxColumn2.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn2.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn2.Name = "contentDataGridViewTextBoxColumn2";
+            this.contentDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn2
+            // 
+            this.statusDataGridViewTextBoxColumn2.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn2.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn2.Name = "statusDataGridViewTextBoxColumn2";
+            this.statusDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // mailSourceDataGridViewTextBoxColumn2
+            // 
+            this.mailSourceDataGridViewTextBoxColumn2.DataPropertyName = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn2.HeaderText = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn2.Name = "mailSourceDataGridViewTextBoxColumn2";
+            this.mailSourceDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // fileEmailContentBindingSource
+            // 
+            this.fileEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            // 
+            // emailContentIDDataGridViewTextBoxColumn1
+            // 
+            this.emailContentIDDataGridViewTextBoxColumn1.DataPropertyName = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn1.HeaderText = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn1.Name = "emailContentIDDataGridViewTextBoxColumn1";
+            this.emailContentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn1
+            // 
+            this.contentDataGridViewTextBoxColumn1.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn1.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn1.Name = "contentDataGridViewTextBoxColumn1";
+            this.contentDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            this.statusDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // mailSourceDataGridViewTextBoxColumn1
+            // 
+            this.mailSourceDataGridViewTextBoxColumn1.DataPropertyName = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn1.HeaderText = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn1.Name = "mailSourceDataGridViewTextBoxColumn1";
+            this.mailSourceDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dbEmailContentBindingSource
+            // 
+            this.dbEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            // 
+            // emailContentIDDataGridViewTextBoxColumn
+            // 
+            this.emailContentIDDataGridViewTextBoxColumn.DataPropertyName = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn.HeaderText = "EmailContentID";
+            this.emailContentIDDataGridViewTextBoxColumn.Name = "emailContentIDDataGridViewTextBoxColumn";
+            this.emailContentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn
+            // 
+            this.contentDataGridViewTextBoxColumn.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn.Name = "contentDataGridViewTextBoxColumn";
+            this.contentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mailSourceDataGridViewTextBoxColumn
+            // 
+            this.mailSourceDataGridViewTextBoxColumn.DataPropertyName = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn.HeaderText = "MailSource";
+            this.mailSourceDataGridViewTextBoxColumn.Name = "mailSourceDataGridViewTextBoxColumn";
+            this.mailSourceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // checkedEmailContentBindingSource
+            // 
+            this.checkedEmailContentBindingSource.DataSource = typeof(Domain.Entities.EmailContent);
+            // 
+            // validationHistoryBindingSource
+            // 
+            this.validationHistoryBindingSource.DataSource = typeof(Domain.Entities.ValidationHistory);
+            // 
+            // validationHistoryIDDataGridViewTextBoxColumn
+            // 
+            this.validationHistoryIDDataGridViewTextBoxColumn.DataPropertyName = "ValidationHistoryID";
+            this.validationHistoryIDDataGridViewTextBoxColumn.HeaderText = "ValidationHistoryID";
+            this.validationHistoryIDDataGridViewTextBoxColumn.Name = "validationHistoryIDDataGridViewTextBoxColumn";
+            this.validationHistoryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contentDataGridViewTextBoxColumn3
+            // 
+            this.contentDataGridViewTextBoxColumn3.DataPropertyName = "Content";
+            this.contentDataGridViewTextBoxColumn3.HeaderText = "Content";
+            this.contentDataGridViewTextBoxColumn3.Name = "contentDataGridViewTextBoxColumn3";
+            this.contentDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn3
+            // 
+            this.statusDataGridViewTextBoxColumn3.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn3.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn3.Name = "statusDataGridViewTextBoxColumn3";
+            this.statusDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fileNameDataGridViewTextBoxColumn
+            // 
+            this.fileNameDataGridViewTextBoxColumn.DataPropertyName = "FileName";
+            this.fileNameDataGridViewTextBoxColumn.HeaderText = "FileName";
+            this.fileNameDataGridViewTextBoxColumn.Name = "fileNameDataGridViewTextBoxColumn";
+            this.fileNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailContentIdDataGridViewTextBoxColumn3
+            // 
+            this.emailContentIdDataGridViewTextBoxColumn3.DataPropertyName = "EmailContentId";
+            this.emailContentIdDataGridViewTextBoxColumn3.HeaderText = "EmailContentId";
+            this.emailContentIdDataGridViewTextBoxColumn3.Name = "emailContentIdDataGridViewTextBoxColumn3";
+            this.emailContentIdDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // validationDTGDataGridViewTextBoxColumn
+            // 
+            this.validationDTGDataGridViewTextBoxColumn.DataPropertyName = "ValidationDTG";
+            this.validationDTGDataGridViewTextBoxColumn.HeaderText = "ValidationDTG";
+            this.validationDTGDataGridViewTextBoxColumn.Name = "validationDTGDataGridViewTextBoxColumn";
+            this.validationDTGDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,6 +675,7 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Mail Filter";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
             this.workingPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -606,22 +684,23 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).EndInit();
             this.historyPage.ResumeLayout(false);
             this.historyPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validationHistoryDataGridView)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileEmailContentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbEmailContentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedEmailContentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validationHistoryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -631,7 +710,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage workingPage;
         private System.Windows.Forms.TabPage historyPage;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView validationHistoryDataGridView;
         private System.Windows.Forms.TextBox violatedContentTxt;
         private System.Windows.Forms.DateTimePicker to;
         private System.Windows.Forms.DateTimePicker from;
@@ -680,6 +759,14 @@
         private System.Windows.Forms.CheckBox errorChk;
         private System.Windows.Forms.CheckBox notViolatedChk;
         private System.Windows.Forms.CheckBox violatedChk;
+        private System.Windows.Forms.BindingSource validationHistoryBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validationHistoryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contentDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailContentIdDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validationDTGDataGridViewTextBoxColumn;
     }
 }
 

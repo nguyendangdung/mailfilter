@@ -9,8 +9,9 @@ namespace Services.Migrations.mails
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\mails";
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MailContext context)

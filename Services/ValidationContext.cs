@@ -12,5 +12,15 @@ namespace Services
         {
             Database.Log = Log.Information;
         }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ValidationHistory>().Property(s => s.Content).IsRequired();
+            modelBuilder.Entity<ValidationHistory>().Property(s => s.AsciiContent).IsRequired();
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
