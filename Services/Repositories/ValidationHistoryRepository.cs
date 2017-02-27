@@ -83,6 +83,7 @@ namespace Services.Repositories
 
         public async Task AddRangeAsync(List<ValidationHistory> items)
         {
+            // Neet to change this code make it become bulk insert
             if (items == null)
             {
                 throw new ArgumentNullException(nameof(items));
