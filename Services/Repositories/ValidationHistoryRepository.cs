@@ -15,22 +15,22 @@ namespace Services.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<int> AddAsync(ValidationHistory item)
+        public async Task AddAsync(ValidationHistory item)
         {
             using (var context = new ValidationContext())
             {
                 context.ValidationHistories.Add(item);
-                return await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
             
         }
 
-        public async Task<int> AddRangeAsync(List<ValidationHistory> items)
+        public async Task AddRangeAsync(List<ValidationHistory> items)
         {
             using (var context = new ValidationContext())
             {
                 context.ValidationHistories.AddRange(items);
-                return await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
                 
         }

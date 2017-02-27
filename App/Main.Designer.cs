@@ -561,7 +561,6 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Mail Filter";
-            
             this.tabControl1.ResumeLayout(false);
             this.workingPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);

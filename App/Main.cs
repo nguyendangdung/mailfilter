@@ -21,7 +21,7 @@ namespace App
 {
     public partial class Main : Form
     {
-        private bool _isClosing;
+        // private bool _isClosing;
         private bool _isRunning;
         CancellationTokenSource _source;
         private readonly MailFilterService _fileMailFilterService;
@@ -46,7 +46,7 @@ namespace App
                     }
                 };
 
-            _dbMailFilterService = new MailFilterService(new DbMailRepository(), new ValidationHistoryRepository())
+            _dbMailFilterService = new MailFilterService(new AdoMailRepository(), new AdoValidationHistoryRepository())
             {
                 OnEmailChecked = e => AddToRecentList(e),
                 Filters = new Collection<IFilter>()

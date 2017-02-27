@@ -10,7 +10,7 @@ namespace Domain.IRepository
     public interface IValidationHistoryRepository
     {
         Task<IEnumerable<ValidationHistory>> GetAllAsync(int page = 1, int size = 20);
-        Task<int> AddAsync(ValidationHistory item);
-        Task<int> AddRangeAsync(List<ValidationHistory> items);
+        Task AddAsync(ValidationHistory item);
+        Task AddRangeAsync(List<ValidationHistory> items);
     }
 }

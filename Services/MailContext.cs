@@ -5,12 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Serilog;
 
 namespace Services
 {
     public class MailContext : DbContext
     {
         public DbSet<EmailContent> EmailContents { get; set; }
+
+        public MailContext()
+        {
+            Database.Log = Log.Information;
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
