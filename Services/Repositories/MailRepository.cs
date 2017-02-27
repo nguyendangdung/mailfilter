@@ -11,7 +11,7 @@ using Domain.IRepository;
 
 namespace Services.Repositories
 {
-    public class AdoMailRepository : IMailRepository
+    public class MailRepository : IMailRepository
     {
 
         private readonly string _connectonString = ConfigurationManager.ConnectionStrings["MailContext"].ConnectionString;

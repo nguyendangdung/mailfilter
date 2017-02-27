@@ -34,32 +34,33 @@ namespace App
         {
             InitializeComponent();
 
-            _validationHistoryRepository = new AdoValidationHistoryRepository();
+            _validationHistoryRepository = new ValidationHistoryRepository();
 
             _recentCheckedEmails = new BindingList<EmailContent>();
 
             srcTxt.Text = Settings.Default.src;
             desTxt.Text = Settings.Default.des;
 
+            // Maybe utilize Managed Extensibility Framework (MEF) to dynamic load IFilter instances from assemblies in the production
+            var filters = new Collection<IFilter>()
+            {
+                new SendCustomerIDFilter(),
+                new SensitiveInfoFilter()
+                // add many filter here if need
+            };
+
             _fileMailFilterService =
                 new MailFilterService(new FileMailRepository(Settings.Default.src, Settings.Default.des),
                     _validationHistoryRepository)
                 {
                     OnEmailChecked = e => AddToRecentList(e),
-                    Filters = new Collection<IFilter>()
-                    {
-                        new SendCustomerIDFilter(), new SensitiveInfoFilter()
-                    }
+                    Filters = filters
                 };
 
-            _dbMailFilterService = new MailFilterService(new AdoMailRepository(), _validationHistoryRepository)
+            _dbMailFilterService = new MailFilterService(new MailRepository(), _validationHistoryRepository)
             {
                 OnEmailChecked = e => AddToRecentList(e),
-                Filters = new Collection<IFilter>()
-                {
-                    new SendCustomerIDFilter(),
-                    new SensitiveInfoFilter()
-                }
+                Filters = filters
             };
 
             fileEmailContentBindingSource.DataSource = _fileMailFilterService.EmailContentQueue;
