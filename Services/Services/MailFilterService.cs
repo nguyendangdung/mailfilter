@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Domain.Entities;
 using Domain.Filters;
 using Domain.IRepository;
 using Domain.Services;
+using Timer = System.Timers.Timer;
 
 namespace Services.Services
 {
@@ -67,14 +69,67 @@ namespace Services.Services
             Filters.Remove(filter);
         }
 
-        public async Task StartFilterAsync()
+        public async Task StartFilterAsync(CancellationToken cancellationToken)
         {
-            await DoFilterAsync();
+            var emails = new List<EmailContent>();
+            var validationHistories = new List<ValidationHistory>();
+            while (true)
+            {
+                var isEmpty = _emailContentQueue.IsEmpty;
+                if (!isEmpty)
+                {
+                    EmailContent email;
+                    var result = _emailContentQueue.TryDequeue(out email);
+                    if (result && email != null)
+                    {
+                        // Get FilterResults from filters
+                        var filterResults = Filters.Select(s => s.CheckMail(email)).ToList();
+                        email.Status = filterResults.Any(s => s.Status == EmailStatus.Violated)
+                            ? EmailStatus.Violated
+                            : EmailStatus.NotViolated;
+
+                        // Add email to the template list
+                        emails.Add(email);
+
+                        // Generate ValidationHistory Object
+                        var validationHistory = GetValidationHistory(email, filterResults);
+
+                        // Add ValidationHistory to the template list
+                        validationHistories.Add(validationHistory);
+
+                        // Update working list
+                        DequeueProgress.Report(email);
+                    }
+                }
+
+                // If queue is empty or there are 100 emails in the queue => Save data into the storage
+                if (isEmpty || emails.Count >= 100)
+                {
+                    await _mailRepository.SaveCheckedEmailsAsync(emails);
+                    await _validationHistoryRepository.AddRangeAsync(validationHistories);
+
+                    emails.Clear();
+                    validationHistories.Clear();
+                    if (isEmpty)
+                    {
+                        await Task.Delay(1000, cancellationToken);
+                    }
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        return;
+                    }
+                }
+            }
         }
 
         public async Task MonitorAsync()
         {
             await Task.Run(DoMonitorAsync);
+        }
+
+        public void StopMonitor()
+        {
+            _timer.Stop();
         }
 
         /// <summary>
@@ -101,60 +156,10 @@ namespace Services.Services
         }
 
 
-        private async Task DoFilterAsync()
-        {
-            var emails = new List<EmailContent>();
-            var validationHistories = new List<ValidationHistory>();
-            while (true)
-            {
-                if (!_emailContentQueue.IsEmpty)
-                {
-                    EmailContent email;
-                    var result = _emailContentQueue.TryDequeue(out email);
-                    if (result && email != null)
-                    {
-                        // Get FilterResults from filters
-                        var filterResults = Filters.Select(s => s.CheckMail(email)).ToList();
-                        email.Status = filterResults.Any(s => s.Status == EmailStatus.Violated)
-                            ? EmailStatus.Violated
-                            : EmailStatus.NotViolated;
-
-                        // Add email to the template list
-                        emails.Add(email);
-
-                        // Generate ValidationHistory Object
-                        var validationHistory = GetValidationHistory(email, filterResults);
-
-                        // Add ValidationHistory to the template list
-                        validationHistories.Add(validationHistory);
-
-                        // Update working list
-                        DequeueProgress.Report(email);
-
-                        if (emails.Count >= 100)
-                        {
-                            await _mailRepository.SaveCheckedEmailsAsync(emails);
-                            await _validationHistoryRepository.AddRangeAsync(validationHistories);
-
-                            emails.Clear();
-                            validationHistories.Clear();
-                        }
-                    }
-                }
-                else
-                {
-                    if (emails.Any())
-                    {
-                        await _mailRepository.SaveCheckedEmailsAsync(emails);
-                        await _validationHistoryRepository.AddRangeAsync(validationHistories);
-
-                        emails.Clear();
-                        validationHistories.Clear();
-                    }
-                    await Task.Delay(1000);
-                }
-            }
-        }
+        //private async Task DoFilterAsync()
+        //{
+            
+        //}
 
         private ValidationHistory GetValidationHistory(EmailContent email, List<FilterResult> filterResults)
         {

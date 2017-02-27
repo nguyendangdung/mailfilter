@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Filters;
@@ -22,7 +23,7 @@ namespace Domain.Services
 
         void RemoveFilter(IFilter filter);
 
-        Task StartFilterAsync();
+        Task StartFilterAsync(CancellationToken cancellationToken);
         Task MonitorAsync();
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Properties;
@@ -11,6 +12,7 @@ using Domain.Entities;
 using Domain.Filters;
 using Domain.Services;
 using Services;
+using Helpers;
 using Services.Filters;
 using Services.Repositories;
 using Services.Services;
@@ -19,13 +21,16 @@ namespace App
 {
     public partial class Main : Form
     {
+        private bool _isClosing;
+        private bool _isRunning;
+        CancellationTokenSource _source;
         private readonly MailFilterService _fileMailFilterService;
         private readonly MailFilterService _dbMailFilterService;
-        private readonly BindingList<EmailContent> _checkedEmails;
+        private readonly BindingList<EmailContent> _recentCheckedEmails;
         public Main()
         {
             InitializeComponent();
-            _checkedEmails = new BindingList<EmailContent>();
+            _recentCheckedEmails = new BindingList<EmailContent>();
 
             srcTxt.Text = Settings.Default.src;
             desTxt.Text = Settings.Default.des;
@@ -53,22 +58,48 @@ namespace App
 
             fileEmailContentBindingSource.DataSource = _fileMailFilterService.EmailContentQueue;
             dbEmailContentBindingSource.DataSource = _dbMailFilterService.EmailContentQueue;
-            checkedEmailContentBindingSource.DataSource = _checkedEmails;
+            checkedEmailContentBindingSource.DataSource = _recentCheckedEmails;
+
+            //_source.Token.Register(() =>
+            //{
+            //    _isRunning = false;
+            //    startBtn.Enabled = !_isRunning;
+            //    stopBtn.Enabled = _isRunning;
+            //});
         }
 
         private async void startBtn_Click(object sender, EventArgs e)
         {
-            if (CheckMailDirectories())
+            if (CheckMailDirectories() && !_isRunning)
             {
+                _source = new CancellationTokenSource();
+                _source.Token.Register(() =>
+                {
+                    _isRunning = false;
+                    startBtn.Enabled = !_isRunning;
+                    stopBtn.Enabled = _isRunning;
+                });
+                _isRunning = true;
+                startBtn.Enabled = !_isRunning;
+                stopBtn.Enabled = _isRunning;
                 var monitorTasks1 = _fileMailFilterService.MonitorAsync();
                 var monitorTasks2 = _dbMailFilterService.MonitorAsync();
                 await Task.WhenAll(monitorTasks1, monitorTasks2);
 
-                var task1 = _fileMailFilterService.StartFilterAsync();
-                var task2 = _dbMailFilterService.StartFilterAsync();
+                var task1 = _fileMailFilterService.StartFilterAsync(_source.Token);
+                var task2 = _dbMailFilterService.StartFilterAsync(_source.Token);
 
-                await Task.WhenAll(task1, task2);
+                // await Task.WhenAll(task1, task2);
+                await Task.WhenAny(Task.WhenAll(task1, task2), _source.Token.AsTask());
             }
+        }
+
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+            stopBtn.Enabled = false;
+            _fileMailFilterService.StopMonitor();
+            _dbMailFilterService.StopMonitor();
+            _source.Cancel();
         }
 
         private bool CheckMailDirectories()
@@ -83,11 +114,26 @@ namespace App
             {
                 throw new ArgumentNullException("email");
             }
-            _checkedEmails.Add(email);
-            if (_checkedEmails.Count > 100)
+            _recentCheckedEmails.Add(email);
+            if (_recentCheckedEmails.Count > 100)
             {
-                _checkedEmails.RemoveAt(0);
+                _recentCheckedEmails.RemoveAt(0);
             }
         }
+
+        //private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    if (VScroll)
+        //    {
+                
+        //    }
+        //    // stop before close the app
+        //    if (_isRunning && !_isClosing)
+        //    {
+        //        _isClosing = true;
+        //        _source.Cancel();
+        //        e.Cancel = true;
+        //    }
+        //}
     }
 }

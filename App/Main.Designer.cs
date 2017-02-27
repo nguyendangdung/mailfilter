@@ -496,12 +496,14 @@
             // 
             // stopBtn
             // 
+            this.stopBtn.Enabled = false;
             this.stopBtn.Location = new System.Drawing.Point(719, 46);
             this.stopBtn.Name = "stopBtn";
             this.stopBtn.Size = new System.Drawing.Size(137, 23);
             this.stopBtn.TabIndex = 9;
             this.stopBtn.Text = "Stop";
             this.stopBtn.UseVisualStyleBackColor = true;
+            this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
             // 
             // startBtn
             // 
@@ -559,6 +561,7 @@
             this.MinimizeBox = false;
             this.Name = "Main";
             this.Text = "Mail Filter";
+            
             this.tabControl1.ResumeLayout(false);
             this.workingPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
