@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using Domain.Entities;
-using Serilog;
 
-namespace Services
+namespace GenerateFakeEmails
 {
     public class MailContext : DbContext
     {
         public DbSet<EmailContent> EmailContents { get; set; }
-
-        public MailContext()
-        {
-            Database.Log = Log.Information;
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

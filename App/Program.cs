@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Serilog;
 
 namespace App
 {
@@ -17,7 +13,6 @@ namespace App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Log.Logger = new LoggerConfiguration().WriteTo.Seq("http://localhost:5341").CreateLogger();
             Application.Run(new Main());
         }
     }
