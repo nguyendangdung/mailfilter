@@ -71,7 +71,6 @@
     <Compile Include="Repositories\AdoMailRepository.cs" />
     <Compile Include="Repositories\AdoValidationHistoryRepository.cs" />
     <Compile Include="Repositories\ValidationHistoryRepository.cs" />
-    <Compile Include="Repositories\DbMailRepository.cs" />
     <Compile Include="Repositories\FileMailRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MailFilterService.cs" />
