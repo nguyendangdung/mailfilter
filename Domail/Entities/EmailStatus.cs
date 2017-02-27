@@ -2,6 +2,6 @@
 {
     public enum EmailStatus
     {
-        NotChecked = 0, Violated = 2, NotViolated = 1, Error = 3, Checking = 4
+        NotChecked = 0, NotViolated = 1, Violated = 2, Error = 3, Checking = 4
     }
 }
