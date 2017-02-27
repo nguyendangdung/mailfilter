@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.IRepository;
+using Helpers;
 
 namespace Services.Repositories
 {
@@ -37,7 +38,7 @@ namespace Services.Repositories
                     await con.OpenAsync();
                     var sql =
                         "INSERT [dbo].[ValidationHistories]([ValidationHistoryID], [Content], [Status], [Description], [FileName], [EmailContentId], [ValidationDTG]) " +
-                        "VALUES (@0, @1, @2, @3, @4, @5, @6)";
+                        "VALUES (@0, @1, @2, @3, @4, @5, @6);";
                     using (var cmd = new SqlCommand(sql, con))
                     {
                         foreach (var s in items)
@@ -49,30 +50,39 @@ namespace Services.Repositories
                             });
                             cmd.Parameters.Add(new SqlParameter("@1", SqlDbType.NVarChar)
                             {
-                                Value = s.Content
+                                Value = s.Content.GetDbValue()
                             });
                             cmd.Parameters.Add(new SqlParameter("@2", SqlDbType.Int)
                             {
-                                Value = (int)s.Status
+                                Value = (int)s.Status.GetDbValue()
                             });
                             cmd.Parameters.Add(new SqlParameter("@3", SqlDbType.NVarChar)
                             {
-                                Value = s.Description
+                                Value = s.Description.GetDbValue()
                             });
                             cmd.Parameters.Add(new SqlParameter("@4", SqlDbType.NVarChar)
                             {
-                                Value = s.FileName
+                                Value = s.FileName.GetDbValue()
                             });
                             cmd.Parameters.Add(new SqlParameter("@5", SqlDbType.UniqueIdentifier)
                             {
-                                Value = s.EmailContentId
+                                Value = s.EmailContentId.GetDbValue()
                             });
                             cmd.Parameters.Add(new SqlParameter("@6", SqlDbType.DateTime2)
                             {
-                                Value = s.ValidationDTG
+                                Value = s.ValidationDTG.GetDbValue()
                             });
-                            
-                            await cmd.ExecuteNonQueryAsync();
+
+                            try
+                            {
+                                await cmd.ExecuteNonQueryAsync();
+                            }
+                            catch (Exception ex)
+                            {
+
+                                // throw;
+                            }
+
                         }
                     }
                     
