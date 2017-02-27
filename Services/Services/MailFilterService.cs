@@ -182,7 +182,7 @@ namespace Services.Services
                 ValidationDTG = DateTime.Now,
                 ValidationHistoryID = Guid.NewGuid(),
                 Description = message,
-                FileName = email.MailSource == MailSource.FileSystem ? "" : null
+                FileName = email.MailSource == MailSource.FileSystem ? $"{email.EmailContentID}_{(int)email.Status}.txt" : null
             };
         }
 

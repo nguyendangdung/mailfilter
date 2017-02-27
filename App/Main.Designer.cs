@@ -293,7 +293,7 @@
             this.groupBox3.Size = new System.Drawing.Size(347, 430);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Processed Mails";
+            this.groupBox3.Text = "Recent Processed Mails (100 items most recent)";
             // 
             // dataGridView4
             // 

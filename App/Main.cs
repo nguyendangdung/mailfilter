@@ -34,7 +34,7 @@ namespace App
                 new MailFilterService(new FileMailRepository(Settings.Default.src, Settings.Default.des),
                     new ValidationHistoryRepository())
                 {
-                    OnEmailChecked = e => _checkedEmails.Add(e),
+                    OnEmailChecked = e => AddToRecentList(e),
                     Filters = new Collection<IFilter>()
                     {
                         new SendCustomerIDFilter(), new SensitiveInfoFilter()
@@ -43,7 +43,7 @@ namespace App
 
             _dbMailFilterService = new MailFilterService(new DbMailRepository(), new ValidationHistoryRepository())
             {
-                OnEmailChecked = e => _checkedEmails.Add(e),
+                OnEmailChecked = e => AddToRecentList(e),
                 Filters = new Collection<IFilter>()
                 {
                     new SendCustomerIDFilter(),
@@ -74,6 +74,20 @@ namespace App
         private bool CheckMailDirectories()
         {
             return Directory.Exists(Settings.Default.src) && Directory.Exists(Settings.Default.des);
+        }
+
+
+        private void AddToRecentList(EmailContent email)
+        {
+            if (email == null)
+            {
+                throw new ArgumentNullException("email");
+            }
+            _checkedEmails.Add(email);
+            if (_checkedEmails.Count > 100)
+            {
+                _checkedEmails.RemoveAt(0);
+            }
         }
     }
 }
