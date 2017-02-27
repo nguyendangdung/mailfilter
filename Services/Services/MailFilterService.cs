@@ -103,7 +103,7 @@ namespace Services.Services
 
         private async Task DoFilterAsync()
         {
-            var temp = new List<EmailContent>();
+            var emails = new List<EmailContent>();
             var validationHistories = new List<ValidationHistory>();
             while (true)
             {
@@ -119,33 +119,36 @@ namespace Services.Services
                             ? EmailStatus.Violated
                             : EmailStatus.NotViolated;
 
-                        temp.Add(email);
+                        // Add email to the template list
+                        emails.Add(email);
 
                         // Generate ValidationHistory Object
                         var validationHistory = GetValidationHistory(email, filterResults);
+
+                        // Add ValidationHistory to the template list
                         validationHistories.Add(validationHistory);
 
                         // Update working list
                         DequeueProgress.Report(email);
 
-                        if (temp.Count >= 100)
+                        if (emails.Count >= 100)
                         {
-                            var successEmails = await _mailRepository.UpdateCheckEmailsAsync(temp);
+                            var successEmails = await _mailRepository.UpdateCheckEmailsAsync(emails);
                             await _validationHistoryRepository.AddRangeAsync(validationHistories);
 
-                            temp.Clear();
+                            emails.Clear();
                             validationHistories.Clear();
                         }
                     }
                 }
                 else
                 {
-                    if (temp.Any())
+                    if (emails.Any())
                     {
-                        await _mailRepository.UpdateCheckEmailsAsync(temp);
+                        await _mailRepository.UpdateCheckEmailsAsync(emails);
                         await _validationHistoryRepository.AddRangeAsync(validationHistories);
 
-                        temp.Clear();
+                        emails.Clear();
                         validationHistories.Clear();
                     }
                     await Task.Delay(1000);
