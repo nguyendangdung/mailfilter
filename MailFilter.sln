@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFakeEmails", "Gener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesTests", "ServicesTests\ServicesTests.csproj", "{6A68E2EE-24A7-4F76-800B-DEE9B879E4E7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B7D68650-EEAE-4A52-AF19-41A849340FBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimulateMails", "SimulateMails", "{B7D68650-EEAE-4A52-AF19-41A849340FBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
