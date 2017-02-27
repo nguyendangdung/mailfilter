@@ -19,14 +19,14 @@ namespace Domain.IRepository
         /// </summary>
         /// <param name="email"></param>
         /// <returns>Return the email if success</returns>
-        Task<EmailContent> UpdateCheckEmailAsync(EmailContent email);
+        Task SaveCheckedEmailAsync(EmailContent email);
 
         /// <summary>
         /// Save Checked emails
         /// </summary>
         /// <param name="emails"></param>
         /// <returns></returns>
-        Task<List<EmailContent>> UpdateCheckEmailsAsync(List<EmailContent> emails);
+        Task SaveCheckedEmailsAsync(List<EmailContent> emails);
         // Task Save
     }
 }

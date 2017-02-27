@@ -133,7 +133,7 @@ namespace Services.Services
 
                         if (emails.Count >= 100)
                         {
-                            var successEmails = await _mailRepository.UpdateCheckEmailsAsync(emails);
+                            await _mailRepository.SaveCheckedEmailsAsync(emails);
                             await _validationHistoryRepository.AddRangeAsync(validationHistories);
 
                             emails.Clear();
@@ -145,7 +145,7 @@ namespace Services.Services
                 {
                     if (emails.Any())
                     {
-                        await _mailRepository.UpdateCheckEmailsAsync(emails);
+                        await _mailRepository.SaveCheckedEmailsAsync(emails);
                         await _validationHistoryRepository.AddRangeAsync(validationHistories);
 
                         emails.Clear();

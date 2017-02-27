@@ -23,7 +23,7 @@ namespace Services.Repositories
             
         }
 
-        public async Task<EmailContent> UpdateCheckEmailAsync(EmailContent email)
+        public async Task SaveCheckedEmailAsync(EmailContent email)
         {
             try
             {
@@ -32,17 +32,17 @@ namespace Services.Repositories
                     context.EmailContents.Attach(email);
                     context.Entry(email).State = EntityState.Modified;
                     await context.SaveChangesAsync();
-                    return email;
+                    // return email;
                 }
             }
             catch (Exception)
             {
-                return null;
+                // return null;
             }
             
         }
 
-        public async Task<List<EmailContent>> UpdateCheckEmailsAsync(List<EmailContent> emails)
+        public async Task SaveCheckedEmailsAsync(List<EmailContent> emails)
         {
             try
             {
@@ -55,14 +55,12 @@ namespace Services.Repositories
 
                     });
                     await context.SaveChangesAsync();
-                    return emails;
                 }
             }
             catch (Exception)
             {
-                return new List<EmailContent>();
+                // return new List<EmailContent>();
             }
-            
         }
     }
 }

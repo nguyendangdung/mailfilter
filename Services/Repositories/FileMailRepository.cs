@@ -68,12 +68,18 @@ namespace Services.Repositories
 
         /// <summary>
         /// Save checked email
-        /// 1) Delete the email from source dir
-        /// 2) Create a copy with the status in name
+        /// 1) Create a copy with the status in name
+        /// 2) Delete the email from source dir
+        /// 
+        /// + Failed to Create and delete
+        /// + Success to Create Failed to delete
+        /// + Success to Create and Delete
+        /// 
+        /// Need to cover all of the above in the production
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        public async Task<EmailContent> UpdateCheckEmailAsync(EmailContent email)
+        public async Task SaveCheckedEmailAsync(EmailContent email)
         {
             try
             {
@@ -86,21 +92,20 @@ namespace Services.Repositories
 
                 // Delete the old one
                 File.Delete(Path.Combine(SourceDirectory, $"{email.EmailContentID}.txt"));
-                return email;
+                // return email;
             }
             catch (Exception ex)
             {
-                return null;
+                // return null;
                 // throw;
             }
             
         }
 
-        public async Task<List<EmailContent>> UpdateCheckEmailsAsync(List<EmailContent> emails)
+        public async Task SaveCheckedEmailsAsync(List<EmailContent> emails)
         {
-            var tasks = emails.Select(email => UpdateCheckEmailAsync(email)).ToList();
+            var tasks = emails.Select(email => SaveCheckedEmailAsync(email)).ToList();
             await Task.WhenAll(tasks);
-            return tasks.Select(s => s.Result).Where(s => s != null).ToList();
         }
 
         /// <summary>

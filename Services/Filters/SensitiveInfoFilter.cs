@@ -22,19 +22,28 @@ namespace Services.Filters
 
         public FilterResult CheckMail(EmailContent email)
         {
-            var words = email.Content.Split(new char[0]).Where(s => s.Length > 0);
-            var illegalWords = words.Where(s => s.Length >= 8 && s.All(Char.IsDigit));
-            if (illegalWords.Any())
+            try
             {
-                // email.Status = EmailStatus.Violated;
-                return new FilterResult()
+                var words = email.Content.Split(new char[0]).Where(s => s.Length > 0);
+                var illegalWords = words.Where(s => s.Length >= 8 && s.All(Char.IsDigit));
+                if (illegalWords.Any())
                 {
-                    Status = EmailStatus.Violated,
-                    Message = "Thông tin nhạy cảm"
-                };
+                    // email.Status = EmailStatus.Violated;
+                    return new FilterResult()
+                    {
+                        Status = EmailStatus.Violated,
+                        Message = "Thông tin nhạy cảm"
+                    };
+                }
+                // email.Status = EmailStatus.NotViolated;
+                return new FilterResult() { Status = EmailStatus.NotViolated };
             }
-            // email.Status = EmailStatus.NotViolated;
-            return new FilterResult() {Status = EmailStatus.NotViolated};
+            catch (Exception ex)
+            {
+                return new FilterResult() { Status = EmailStatus.NotViolated };
+                // todo log the exception here
+            }
+            
         }
     }
 }
