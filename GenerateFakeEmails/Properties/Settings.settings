@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="src" Type="System.String" Scope="User">
-      <Value Profile="(Default)">E:\job\projects\MailFilter\build\src</Value>
+      <Value Profile="(Default)">C:\Users\dannguyen\source\repos\build\src</Value>
     </Setting>
   </Settings>
 </SettingsFile>

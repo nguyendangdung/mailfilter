@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="src" Type="System.String" Scope="User">
-      <Value Profile="(Default)">E:\job\projects\MailFilter\build\src</Value>
+      <Value Profile="(Default)">C:\Users\dannguyen\source\repos\build\src</Value>
     </Setting>
     <Setting Name="des" Type="System.String" Scope="User">
-      <Value Profile="(Default)">E:\job\projects\MailFilter\build\des</Value>
+      <Value Profile="(Default)">C:\Users\dannguyen\source\repos\build\des</Value>
     </Setting>
   </Settings>
 </SettingsFile>

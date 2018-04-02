@@ -12,7 +12,7 @@ namespace App.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("E:\\job\\projects\\MailFilter\\build\\src")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\dannguyen\\source\\repos\\build\\src")]
         public string src {
             get {
                 return ((string)(this["src"]));
@@ -37,7 +37,7 @@ namespace App.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("E:\\job\\projects\\MailFilter\\build\\des")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\dannguyen\\source\\repos\\build\\des")]
         public string des {
             get {
                 return ((string)(this["des"]));
